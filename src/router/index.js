@@ -23,6 +23,11 @@ const router = createRouter({
       name: 'feed',
       component: () => import('../views/FeedView.vue')
     },
+    {
+      path: '/blogpost',
+      name: 'blogpost',
+      component: () => import('../views/BlogPostView.vue')
+    }
   ]
 })
 
