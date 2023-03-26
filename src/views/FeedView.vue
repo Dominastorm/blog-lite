@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar user="John Doe" :userId="1" />
+    <NavBar user="John Doe" :userId="1" />
     <h2>Feed</h2>
     <ul>
       <li v-for="post in posts" :key="post.id">
@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import TopBar from '@/components/TopBar.vue'
+import NavBar from '@/components/NavBar.vue'
 
 export default {
   components: {
-    TopBar
+    NavBar
   },
   data() {
     return {
