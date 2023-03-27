@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar authType="signup"/>
+    <TopBar authType="signup" />
     <h2>Login</h2>
     <form @submit.prevent="login">
       <div>
@@ -23,7 +23,7 @@
 import TopBar from '@/components/TopBar.vue';
 
 export default {
-  components : {
+  components: {
     TopBar
   },
   data() {
@@ -43,7 +43,8 @@ export default {
 
 <style>
 body {
-  background-color: #2c3e50; /* Dark blue */
+  /* Dark blue */
+  background-color: #2c3e50;
   color: #fff;
   font-family: sans-serif;
 }
@@ -64,7 +65,8 @@ form {
   width: 100%;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #2980b9; /* Light blue */
+  /* Light blue */
+  background-color: #2980b9;
   border-radius: 5px;
 }
 
@@ -85,7 +87,8 @@ input[type="password"] {
 
 button[type="submit"] {
   padding: 0.5rem;
-  background-color: #2c3e50; /* Dark blue */
+  /* Dark blue */
+  background-color: #2c3e50;
   color: #fff;
   border: none;
   border-radius: 3px;
@@ -97,7 +100,8 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #34495e; /* Slightly darker shade of dark blue */
+  /* Slightly darker shade of dark blue */
+  background-color: #34495e;
 }
 
 p {
@@ -113,5 +117,4 @@ a {
 
 a:hover {
   color: #eee;
-}
-</style>
+}</style>
