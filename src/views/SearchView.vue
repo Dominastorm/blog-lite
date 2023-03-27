@@ -30,7 +30,7 @@ export default {
         filteredUsers() {
             if (this.searchText) {
                 return this.users.filter((user) =>
-                    user.username.toLowerCase().startsWith(this.searchText.toLowerCase())
+                    user.username.toLowerCase().includes(this.searchText.toLowerCase())
                 )
             } else {
                 return this.users
