@@ -51,3 +51,33 @@ export default {
   }
 }
 </script>
+
+
+<style >
+body {
+  background-color: #2c3e50; /* Dark blue */
+  color: #fff;
+  font-family: sans-serif;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #eee;
+}
+</style>
