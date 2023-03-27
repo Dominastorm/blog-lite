@@ -60,6 +60,8 @@ form {
   flex-direction: column;
   gap: 1rem;
   max-width: 400px;
+  align-items: center;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   background-color: #2980b9; /* Light blue */
@@ -73,7 +75,6 @@ label {
   margin-bottom: 0.5rem;
 }
 
-input[type="text"],
 input[type="email"],
 input[type="password"] {
   padding: 0.5rem;
@@ -91,6 +92,8 @@ button[type="submit"] {
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
+  display: block;
+  margin: 0 auto;
 }
 
 button[type="submit"]:hover {
