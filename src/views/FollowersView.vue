@@ -1,18 +1,26 @@
 <template>
   <div>
+    <NavBar user="John Doe" :userId="1" />
     <h2>Followers</h2>
-    <ul>
-      <li v-for="follower in followers" :key="follower.id">
-        <router-link :to="'/profile/' + follower.id">{{ follower.username }}</router-link>
-        <button v-if="!follower.followed" @click="follow(follower.id)">Follow</button>
-        <button v-else @click="unfollow(follower.id)">Unfollow</button>
-      </li>
-    </ul>
+    <div class="box">
+      <ul>
+        <div v-for="follower in followers" :key="follower.id" class="list-item">
+          <router-link class="link" :to="'/profile/' + follower.id">{{ follower.username }}</router-link>
+          <button class="button follow" v-if="!follower.followed" @click="follow(follower.id)">Follow</button>
+          <button class="button unfollow" v-else @click="unfollow(follower.id)">Unfollow</button>
+        </div>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
+import NavBar from '@/components/NavBar.vue'
+
 export default {
+  components: {
+    NavBar
+  },
   data() {
     return {
       followers: [
@@ -63,3 +71,71 @@ export default {
   }
 }
 </script>
+
+<style>
+body {
+    background-color: #2c3e50;
+    /* Dark blue */
+    color: #fff;
+    font-family: sans-serif;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    /* Light blue */
+    background-color: #2980b9;
+    border-radius: 5px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: black;
+  text-decoration: none;
+}
+
+.button {
+  width: 125px;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  border: none;
+  color: #fff;
+  background-color: #413d40;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 1rem;
+}
+
+.unfollow:hover {
+  background-color: #d81616;
+}
+
+.follow:hover {
+  background-color: #06690e;
+}
+
+</style>
