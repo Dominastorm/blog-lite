@@ -5,7 +5,7 @@
       <div class="box">
         <ul>
           <div v-for="user in following" :key="user.id" class="list-item">
-            <div class="link">{{ user.username }}</div>
+            <router-link class="link" :to="'/profile/' + user.id">{{ user.username }}</router-link>
             <button class="button" @click="unfollow(user.id)">Unfollow</button>
           </div>
         </ul>
@@ -73,16 +73,6 @@ h2 {
     border-radius: 5px;
 }
 
-
-router-link {
-    flex-grow: 1;
-    margin-right: 10px;
-}
-
-button {
-    flex-shrink: 0;
-}
-
 .list-item {
   display: flex;
   justify-content: space-between;
@@ -92,6 +82,9 @@ button {
 .link {
   flex-grow: 1;
   margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: black;
+  text-decoration: none;
 }
 
 .button {
