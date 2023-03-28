@@ -48,11 +48,6 @@ const router = createRouter({
       name: 'blogpost',
       component: () => import('../views/BlogPostView.vue')
     },
-    {
-      path: '/shark',
-      name: 'shark',
-      component: () => import('../views/SharkMessage.vue')
-    }
   ]
 })
 
