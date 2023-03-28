@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -22,12 +22,21 @@ FOLLOWERS = [
       ]
 
 # Get all followers
-@app.route('/followers', methods=['GET'])
+@app.route('/followers', methods=['GET', 'POST'])
 def get_followers():
-    return jsonify({
-        'followers': FOLLOWERS,
-        'message': 'success'
-    })
+    response_object = {'status': 'success'}
+    if request.method == 'POST':
+        post_data = request.get_json()
+        FOLLOWERS.append({
+            'id': post_data.get('id'),
+            'username': post_data.get('username'),
+            'followed': post_data.get('followed')
+            })
+        response_object['message'] = 'Follower added!'
+    else:
+        response_object['followers'] = FOLLOWERS
+    return jsonify(response_object) 
+
 
 # Run the app
 if __name__ == '__main__':
