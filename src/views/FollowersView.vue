@@ -65,8 +65,6 @@ export default {
         .get(path)
         .then((response) => {
           this.followers = response.data.followers;
-          console.log('Follower', this.follower)
-          this.msg = response.data.message;
         })
         .catch((error) => {
           console.log(error)
