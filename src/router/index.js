@@ -34,7 +34,7 @@ const router = createRouter({
       component: () => import('../views/FollowingView.vue')
     },
     {
-      path: '/followers/:id',
+      path: '/followers',
       name: 'followers',
       component: () => import('../views/FollowersView.vue')
     },

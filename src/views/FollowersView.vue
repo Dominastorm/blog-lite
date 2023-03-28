@@ -15,27 +15,18 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 import NavBar from '@/components/NavBar.vue'
 
 export default {
+  name: 'FollowersView',
   components: {
     NavBar
   },
   data() {
     return {
-      followers: [
-        {
-          id: 1,
-          username: 'exampleuser1',
-          followed: false
-        },
-        {
-          id: 2,
-          username: 'exampleuser2',
-          followed: false
-        }
-        // Add more followers here
-      ]
+      followers: [],
     }
   },
   mounted() {
@@ -67,7 +58,23 @@ export default {
       if (follower) {
         follower.followed = false
       }
+    },
+    getFollowers() {
+      const path = 'http://localhost:5000/followers';
+      axios
+        .get(path)
+        .then((response) => {
+          this.followers = response.data.followers;
+          console.log('Follower', this.follower)
+          this.msg = response.data.message;
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
+  },
+  created() {
+    this.getFollowers();
   }
 }
 </script>
