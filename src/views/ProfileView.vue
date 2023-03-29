@@ -12,13 +12,13 @@
         <div>Followers: <router-link :to="'/followers/' + userId">{{ followersCount }}</router-link></div>
       </div>
     </div>
-    <h3>Posts:</h3>
+    <h3>My Posts</h3>
     <PostList :posts="posts" />
   </div>
 </template>
 
 <script>
-import PostList from '@/components/PostList.vue';
+import PostList from '../components/PostList.vue';
 import NavBar from '../components/NavBar.vue';
 
 export default {
@@ -30,7 +30,7 @@ export default {
     return { 
       username: 'exampleuser',
       userId: 1, // replace with your user ID
-      profileImage: 'https://example.com/profile.jpg', // replace with your profile image URL
+      profileImage: '/assets/dominastorm.jpeg', // replace with your profile image URL
       totalPosts: 10, // replace with your total posts count
       followingCount: 5, // replace with your following count
       followersCount: 8, // replace with your followers count
@@ -56,7 +56,20 @@ export default {
 }
 </script>
   
-<style scoped>
+<style>
+body {
+  /* Dark blue */
+  background-color: #2c3e50;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
 .profile-info {
   display: flex;
   align-items: center;
