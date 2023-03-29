@@ -31,7 +31,8 @@ export default {
   },
   mounted() {
     // Make an API call to get the IDs of all followers that the logged-in user is currently following
-    const followedIds = [1] // Replace with actual API response
+    // TODO: Replace with actual API response
+    const followedIds = [1] 
 
     // Loop through the followers array and update the followed property of each follower accordingly
     this.followers.forEach((follower) => {
@@ -59,8 +60,8 @@ export default {
         follower.followed = false
       }
     },
-    getFollowers() {
-      const path = 'http://localhost:5000/followers';
+    getFollowers(userId) {
+      const path = 'http://localhost:5000/followers/' +  userId;
       axios
         .get(path)
         .then((response) => {
@@ -72,7 +73,8 @@ export default {
     }
   },
   created() {
-    this.getFollowers();
+    // TODO: Remove hard-coded user ID
+    this.getFollowers(1);
   }
 }
 </script>
