@@ -2,46 +2,45 @@
   <div>
     <NavBar user="John Doe" :userId="1" />
     <h2>Feed</h2>
-    <ul>
-      <li v-for="post in posts" :key="post.id">
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.content }}</p>
-        <small>By {{ post.author }} on {{ formatDate(post.date) }}</small>
-      </li>
-    </ul>
+    <PostList :posts="posts" />
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
+import PostList from '../components/PostList.vue';
 
 export default {
   components: {
-    NavBar
+    NavBar,
+    PostList
   },
   data() {
-    return {
-      posts: []
+    return { 
+      username: 'exampleuser',
+      userId: 1, // replace with your user ID
+      profileImage: '/assets/dominastorm.jpeg', // replace with your profile image URL
+      totalPosts: 10, // replace with your total posts count
+      followingCount: 5, // replace with your following count
+      followersCount: 8, // replace with your followers count
+      posts: [
+        {
+          id: 1,
+          title: 'First Post',
+          caption: 'My first post',
+          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          image: '/assets/one.jpg' // replace with your post image URL
+        },
+        {
+          id: 2,
+          title: 'Second Post',
+          caption: 'My second post',
+          content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          image: '/assets/two.jpg' // replace with your post image URL
+        },
+        // Add more posts here
+      ]
     }
-  },
-  created() {
-    // Fetch blog posts from your API
-    this.posts = [
-      {
-        id: 1,
-        title: 'First post',
-        content: 'This is the first post.',
-        author: 'John Doe',
-        date: '2022-01-01T00:00:00Z'
-      },
-      {
-        id: 2,
-        title: 'Second post',
-        content: 'This is the second post.',
-        author: 'Jane Doe',
-        date: '2022-01-02T00:00:00Z'
-      }
-    ]
   },
   methods: {
     formatDate(dateString) {
