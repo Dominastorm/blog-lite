@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h2>{{ username }}'s Profile</h2>
+    <NavBar user="John Doe" :userId="1" />
+    <h2>My Profile</h2>
     <div class="profile-info">
       <div class="profile-image">
         <img :src="profileImage" alt="Profile Image">
@@ -12,21 +13,21 @@
       </div>
     </div>
     <h3>Posts:</h3>
-    <div class="post-list">
-      <div v-for="post in posts" :key="post.id" class="post">
-        <img :src="post.image" alt="Post Image">
-        <h4>{{ post.title }}</h4>
-        <p>{{ post.caption }}</p>
-        <p>{{ post.content }}</p>
-      </div>
-    </div>
+    <PostList :posts="posts" />
   </div>
 </template>
-  
+
 <script>
+import PostList from '@/components/PostList.vue';
+import NavBar from '../components/NavBar.vue';
+
 export default {
+  components: {
+    PostList,
+    NavBar
+  },
   data() {
-    return {
+    return { 
       username: 'exampleuser',
       userId: 1, // replace with your user ID
       profileImage: 'https://example.com/profile.jpg', // replace with your profile image URL
@@ -39,14 +40,14 @@ export default {
           title: 'First Post',
           caption: 'My first post',
           content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-          image: 'https://example.com/post1.jpg' // replace with your post image URL
+          image: '/assets/one.jpg' // replace with your post image URL
         },
         {
           id: 2,
           title: 'Second Post',
           caption: 'My second post',
           content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          image: 'https://example.com/post2.jpg' // replace with your post image URL
+          image: '/assets/two.jpg' // replace with your post image URL
         },
         // Add more posts here
       ]
