@@ -6,7 +6,7 @@
     <div class="top-bar-right">
       <router-link to="/search">Search</router-link>
       <router-link :to="'/profile/' + userId">My Profile</router-link>
-      <a href="#" @click="logout">Logout</a>
+      <a href="/login" @click="logout">Logout</a>
     </div>
   </div>
 </template>
