@@ -10,7 +10,7 @@ def create_app():
     app = Flask(__name__)
     
     app.config['SECRET_KEY'] = 'mysecretkey'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog-lite.db'
 
     CORS(app, resources={r"/*":{'origins':'*'}})
 
