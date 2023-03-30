@@ -21,7 +21,7 @@ def profile():
 @main.route('/followers/<int:user_id>', methods=['GET', 'POST'])
 def get_followers(user_id):
     response_object = {'status': 'success'}
-    conn = sqlite3.connect('../database/blog-lite.sqlite3')
+    conn = sqlite3.connect('../instance/blog-lite.db')
     c = conn.cursor()
     c.execute("select * from users where id in (select follower_id from user_follows where following_id = ?)", (user_id,))
     rows = c.fetchall()

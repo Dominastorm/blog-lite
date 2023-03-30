@@ -1,6 +1,8 @@
 # Set up database
 - [x] Move models to models.py
-- [ ] Add login
+- [x] Test fetching followers in flask
+- [x] Test fetching followers in Vue
+- [ ] Test login in Vue
 
 
 # Important
