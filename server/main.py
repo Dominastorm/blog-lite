@@ -1,4 +1,4 @@
-from flask import jsonify, Blueprint
+from flask import jsonify, Blueprint, render_template
 from . import db
 
 import sqlite3
@@ -7,11 +7,11 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-    return 'Index'
+    return render_template('index.html')
 
 @main.route('/profile')
 def profile():
-    return 'Profile'
+    return render_template('profile.html')
 
 # Get all followers
 @main.route('/followers/<int:user_id>', methods=['GET', 'POST'])
