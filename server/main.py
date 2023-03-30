@@ -1,29 +1,27 @@
-from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask import jsonify, Blueprint
+from . import db
 
 import sqlite3
 
-app = Flask(__name__)
+main = Blueprint('main', __name__)
 
-app.config.from_object(__name__)
+@main.route('/')
+def index():
+    return 'Index'
 
-CORS(app, resources={r"/*":{'origins':'*'}})
+@main.route('/profile')
+def profile():
+    return 'Profile'
 
-# Get all followers from sqlite3 database
-@app.route('/followers/<int:user_id>', methods=['GET', 'POST'])
+# Get all followers
+@main.route('/followers/<int:user_id>', methods=['GET', 'POST'])
 def get_followers(user_id):
     response_object = {'status': 'success'}
-    conn = sqlite3.connect('../database/db.sqlite3')
+    conn = sqlite3.connect('../database/blog-lite.sqlite3')
     c = conn.cursor()
-    c.execute("SELECT * FROM followers")
+    c.execute("select * from users where id in (select follower_id from user_follows where following_id = ?)", (user_id,))
     rows = c.fetchall()
     followers = [{'id': r[0], 'username': r[1], 'followed': bool(r[2])} for r in rows]
     conn.close()
     response_object['followers'] = followers
     return jsonify(response_object)
-
-
-
-# Run the app
-if __name__ == '__main__':
-    app.run(debug=True)

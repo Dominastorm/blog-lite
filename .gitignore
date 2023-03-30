@@ -32,5 +32,6 @@ coverage
 *.sqlite3
 *.sql
 
-# Python env
+# Python
 env
+__pycache__
