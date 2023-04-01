@@ -109,6 +109,7 @@ input[type="password"] {
   font-size: 1rem;
   border: none;
   border-radius: 3px;
+  background-color: azure;
 }
 
 button[type="submit"] {

@@ -128,6 +128,7 @@ input[type="text"] {
     border: none;
     border-radius: 3px;
     width: 95%;
+    background-color: azure;
 }
 
 .search-container {

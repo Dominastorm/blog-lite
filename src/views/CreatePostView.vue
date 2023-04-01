@@ -101,6 +101,7 @@ textarea {
   border-radius: 3px;
   max-width: 98%;
   width: 100%;
+  background-color: azure;
 }
 
 textarea {

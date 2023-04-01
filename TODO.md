@@ -3,6 +3,13 @@
 - [x] Test fetching followers in flask
 - [x] Test fetching followers in Vue
 - [x] Test login in Vue
+
+# Flask + VueJS
+- [x] Set up Flask
+- [x] Implement login
+- [ ] Add remember me functionality
+- [ ] Implement sign up
+- [ ] Implement logout
 - [ ] Add new code for fetching folowers in Vue
 
 
@@ -37,4 +44,5 @@
 - [ ] Make the follow/unfollow button a component of its own
 - [ ] Restyle the top part of profile
 - [ ] Post editing functionality
+- [ ] Change colour of "Choose file" in CreatePostView
 
