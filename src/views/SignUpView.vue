@@ -42,6 +42,15 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <v-dialog v-model="showUserCreatedDialog" persistent max-width="290">
+      <v-card>
+        <v-card-text>User Created Successfully!</v-card-text>
+        <v-card-actions>
+          <v-btn color="primary" text @click="$router.push('/login')">Go to Login page</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -61,7 +70,8 @@ export default {
       password: '',
       confirmPassword: '',
       showPasswordMismatchDialog: false,
-      showUserAlreadyExistsDialog: false
+      showUserAlreadyExistsDialog: false,
+      showUserCreatedDialog: false // added
     }
   },
   methods: {
@@ -80,8 +90,8 @@ export default {
           // Save the token in local storage
           localStorage.setItem('token', response.data.token)
 
-          // Redirect the user to the home page
-          this.$router.push('/')
+          // Show user created dialog and redirect to login page
+          this.showUserCreatedDialog = true
         })
         .catch((error) => {
           console.log(error)
