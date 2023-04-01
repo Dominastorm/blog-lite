@@ -7,10 +7,10 @@
 # Flask + VueJS
 - [x] Set up Flask
 - [x] Implement login
-- [ ] Add remember me functionality
-- [ ] Implement sign up
-- [ ] Implement logout
+- [x] Implement sign up
 - [ ] Add new code for fetching folowers in Vue
+- [ ] Add remember me functionality
+- [ ] Implement logout
 
 
 # Important
@@ -26,6 +26,9 @@
 - [ ] Show blogs on feed based on timestamp (filter by users followed)
 - [ ] Let blog content handle HTML tag
 - [ ] Add page protection
+- [ ] Delete all the HTML files created for Flask
+- [ ] Delete database directory
+- [ ] Change name to username
 
 # Jobs
 - [ ] Backend Jobs

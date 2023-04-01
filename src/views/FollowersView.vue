@@ -5,7 +5,7 @@
     <div class="box">
       <ul>
         <div v-for="follower in followers" :key="follower.id" class="list-item">
-          <router-link class="link" :to="'/profile/' + follower.id">{{ follower.username }}</router-link>
+          <router-link class="link" :to="'/profile/' + follower.id">{{ follower.name }}</router-link>
           <button class="button follow" v-if="!follower.followed" @click="follow(follower.id)">Follow</button>
           <button class="button unfollow" v-else @click="unfollow(follower.id)">Unfollow</button>
         </div>
@@ -62,9 +62,11 @@ export default {
     },
     getFollowers(userId) {
       const path = 'http://localhost:5000/followers/' +  userId;
+      console.log(path)
       axios
         .get(path)
         .then((response) => {
+          console.log(response.data);
           this.followers = response.data.followers;
         })
         .catch((error) => {

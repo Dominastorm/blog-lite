@@ -71,7 +71,7 @@ export default {
       confirmPassword: '',
       showPasswordMismatchDialog: false,
       showUserAlreadyExistsDialog: false,
-      showUserCreatedDialog: false // added
+      showUserCreatedDialog: false
     }
   },
   methods: {
