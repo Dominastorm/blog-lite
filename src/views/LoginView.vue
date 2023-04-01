@@ -16,6 +16,15 @@
       </div>
     </form>
     <p>Don't have an account? <router-link to="/signup">Sign up</router-link></p>
+
+    <v-dialog v-model="showDialog" persistent max-width="290">
+      <v-card>
+        <v-card-text>Incorrect credentials</v-card-text>
+        <v-card-actions>
+          <v-btn color="primary" text @click="showDialog = false">OK</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -31,31 +40,30 @@ export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      showDialog: false
     }
   },
   methods: {
-    login() {
-      const path = 'http://localhost:5000/login'
-      // const credentials = {
-      //   email: this.email,
-      //   password: this.password
-      // }
-      const credentials = "email=" + this.email + "&password=" + this.password 
-      axios.post(path, credentials)
-        .then((response) => {
-          console.log(response)
-          // Save the token in local storage
-          localStorage.setItem('token', response.data.token)
+  login() {
+    const path = 'http://localhost:5000/login'
+    const credentials = "email=" + this.email + "&password=" + this.password 
+    axios.post(path, credentials)
+      .then((response) => {
+        console.log(response)
+        // Save the token in local storage
+        localStorage.setItem('token', response.data.token)
 
-          // Redirect the user to the home page
-          this.$router.push('/')
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    }
+        // Redirect the user to the home page
+        this.$router.push('/')
+      })
+      .catch((error) => {
+        console.log(error)
+        this.showDialog = true
+      })
   }
+}
+
 }
 </script>
 
