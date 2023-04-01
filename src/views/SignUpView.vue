@@ -16,21 +16,41 @@
         <input type="password" id="password" v-model="password" required />
       </div>
       <div>
-        <label for="password">Confirm Password:</label>
-        <input type="password" id="password" v-model="password" required />
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" v-model="confirmPassword" required />
       </div>
       <div>
         <button type="submit">Sign Up</button>
       </div>
     </form>
     <p>Already have an account? <router-link to="/login">Log in</router-link></p>
+
+    <v-dialog v-model="showPasswordMismatchDialog" persistent max-width="290">
+      <v-card>
+        <v-card-text>Passwords don't match!</v-card-text>
+        <v-card-actions>
+          <v-btn color="danger" text @click="showPasswordMismatchDialog = false">OK</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+    <v-dialog v-model="showUserAlreadyExistsDialog" persistent max-width="290">
+      <v-card>
+        <v-card-text>User already exists!</v-card-text>
+        <v-card-actions>
+          <v-btn color="danger" text @click="showUserAlreadyExistsDialog = false">OK</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
 <script>
-import TopBar from '../components/TopBar.vue';
+import axios from 'axios'
+import TopBar from '@/components/TopBar.vue'
 
 export default {
+  name: 'SignupView',
   components: {
     TopBar
   },
@@ -38,13 +58,35 @@ export default {
     return {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      confirmPassword: '',
+      showPasswordMismatchDialog: false,
+      showUserAlreadyExistsDialog: false
     }
   },
   methods: {
     signup() {
-      // Your signup logic goes here
-      console.log('Signing up...')
+      if (this.password !== this.confirmPassword) {
+        console.log(this.password, this.confirmPassword)
+        this.showPasswordMismatchDialog = true
+        return
+      }
+
+      const path = 'http://localhost:5000/signup'
+      const credentials = "name=" + this.name + "&email=" + this.email + "&password=" + this.password 
+      axios.post(path, credentials)
+        .then((response) => {
+          console.log(response)
+          // Save the token in local storage
+          localStorage.setItem('token', response.data.token)
+
+          // Redirect the user to the home page
+          this.$router.push('/')
+        })
+        .catch((error) => {
+          console.log(error)
+          this.showUserAlreadyExistsDialog = true
+        })
     }
   }
 }

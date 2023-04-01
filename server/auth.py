@@ -43,9 +43,12 @@ def signup_post():
     # Handle user already exists
     user = User.query.filter_by(email=email).first()
 
+    print(request.form)
+    print(user)
+    print(email)
+
     if user:
-        flash('Email address already exists')
-        return redirect(url_for('auth.signup'))
+        return jsonify({'message': 'Email address already exists'}), 409
     
     # Create new user with the form data. Hash the password so plaintext version isn't saved.
     new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'))
@@ -54,7 +57,7 @@ def signup_post():
     db.session.add(new_user)
     db.session.commit()
 
-    return redirect(url_for('auth.login'))
+    return jsonify({'message': 'User created successfully!'}), 200
 
 @auth.route('/logout')
 @login_required

@@ -21,7 +21,7 @@
       <v-card>
         <v-card-text>Incorrect credentials</v-card-text>
         <v-card-actions>
-          <v-btn color="primary" text @click="showDialog = false">OK</v-btn>
+          <v-btn color="danger" text @click="showDialog = false">OK</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
