@@ -20,9 +20,11 @@
 </template>
 
 <script>
-import TopBar from '@/components/TopBar.vue';
+import axios from 'axios'
+import TopBar from '@/components/TopBar.vue'
 
 export default {
+  name: 'LoginView',
   components: {
     TopBar
   },
@@ -34,8 +36,24 @@ export default {
   },
   methods: {
     login() {
-      // Your login logic goes here
-      console.log('Logging in...')
+      const path = 'http://localhost:5000/login'
+      // const credentials = {
+      //   email: this.email,
+      //   password: this.password
+      // }
+      const credentials = "email=" + this.email + "&password=" + this.password 
+      axios.post(path, credentials)
+        .then((response) => {
+          console.log(response)
+          // Save the token in local storage
+          localStorage.setItem('token', response.data.token)
+
+          // Redirect the user to the home page
+          this.$router.push('/')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }
 }
