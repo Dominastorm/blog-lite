@@ -76,7 +76,8 @@ export default {
   },
   created() {
     // TODO: Remove hard-coded user ID
-    this.getFollowers(1);
+    const user_id = localStorage.getItem('user_id')
+    this.getFollowers(user_id);
   }
 }
 </script>
@@ -84,7 +85,7 @@ export default {
 <style>
 body {
     background-color: #2c3e50;
-    /* Dark blue */
+    /* D    # login_user(user, remember=remember)ark blue */
     color: #fff;
     font-family: sans-serif;
 }
