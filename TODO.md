@@ -3,6 +3,7 @@
 - [x] Test fetching followers in flask
 - [x] Test fetching followers in Vue
 - [x] Test login in Vue
+- [ ] Get search results from the database
 
 # Flask + VueJS
 - [x] Set up Flask
@@ -31,6 +32,7 @@
 - [ ] Delete all the HTML files created for Flask
 - [ ] Delete database directory
 - [ ] Change name to username
+- [ ] Make the feed unique
 
 # Jobs
 - [ ] Backend Jobs

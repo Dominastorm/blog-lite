@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar user="John Doe" :userId="1" />
+    <NavBar :user="user" :userId="userId" />
     <h2>Followers</h2>
     <div class="box">
       <ul>
@@ -27,6 +27,15 @@ export default {
   data() {
     return {
       followers: [],
+    }
+  },
+  computed: {
+    user() {
+      // TODO: Replace with actual user data
+      return "John Doe"
+    },
+    userId() {
+      return localStorage.getItem('user_id')
     }
   },
   mounted() {
