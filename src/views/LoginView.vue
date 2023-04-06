@@ -51,8 +51,12 @@ export default {
     axios.post(path, credentials)
       .then((response) => {
         console.log(response)
+        console.log()
         // Save the token in local storage
         localStorage.setItem('token', response.data.token)
+
+        // Save the user id in local storage
+        localStorage.setItem('user_id', response.data.user_id)
 
         // Redirect the user to the home page
         this.$router.push('/')

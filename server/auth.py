@@ -27,7 +27,7 @@ def login_post():
     # If the above check passes, then we know the user has the right credentials
     # login_user(user, remember=remember)
     login_user(user)
-    return jsonify({'message': 'Logged in successfully!'}), 200
+    return jsonify({'message': 'Logged in successfully!', 'user_id': user.id}), 200
 
 @auth.route('/signup')
 def signup():

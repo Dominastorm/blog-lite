@@ -13,6 +13,7 @@
 - [ ] Add remember me functionality
 - [ ] Implement logout
 - [ ] Get accurate total posts count, followers count, following count
+- [ ] Use token for authentication
 
 # Important
 - [ ] Add author and date to posts
