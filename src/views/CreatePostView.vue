@@ -1,6 +1,6 @@
  <template>
     <div>
-        <NavBar user="John Doe" :userId="1" />
+        <NavBar />
         <h2>Create a Blog/Post</h2>
         <form @submit.prevent="createPost">
             <div>

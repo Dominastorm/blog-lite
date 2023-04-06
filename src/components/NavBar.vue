@@ -13,14 +13,12 @@
 
 <script>
 export default {
-  props: {
-    user: {
-      type: String,
-      required: true
+  computed: {
+    userId() {
+      return localStorage.getItem('userId')
     },
-    userId: {
-      type: String,
-      required: true
+    user() {
+      return 'John Doe'
     }
   },
   methods: {

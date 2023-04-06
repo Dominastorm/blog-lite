@@ -1,6 +1,6 @@
 <template>
     <div>
-      <NavBar user="John Doe" :userId="1" />
+      <NavBar />
       <h2>Following</h2>
       <div class="box">
         <ul>

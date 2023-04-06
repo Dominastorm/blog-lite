@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar :user="user" :userId="userId" />
+    <NavBar /> 
     <h2>Followers</h2>
     <div class="box">
       <ul>
@@ -27,15 +27,6 @@ export default {
   data() {
     return {
       followers: [],
-    }
-  },
-  computed: {
-    user() {
-      // TODO: Replace with actual user data
-      return "John Doe"
-    },
-    userId() {
-      return localStorage.getItem('userId')
     }
   },
   mounted() {
@@ -84,7 +75,6 @@ export default {
     }
   },
   created() {
-    // TODO: Remove hard-coded user ID
     const userId = localStorage.getItem('userId')
     this.getFollowers(userId);
   }

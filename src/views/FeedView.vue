@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar user="John Doe" :userId="1" />
+    <NavBar />
     <h2>Feed</h2>
     <PostList :posts="posts" />
   </div>

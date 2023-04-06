@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar user="John Doe" :userId="1" />
+    <NavBar />
     <h2>My Profile</h2>
     <div class="profile-info">
       <div class="profile-image">

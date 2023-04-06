@@ -9,7 +9,8 @@
 - [x] Set up Flask
 - [x] Implement login
 - [x] Implement sign up
-- [ ] Add new code for fetching followers in Vue
+- [x] Add new code for fetching followers in Vue
+- [ ] Make NavBar get userId from localStorage
 - [ ] Add new code for fetching following in Vue
 - [ ] Add remember me functionality
 - [ ] Implement logout

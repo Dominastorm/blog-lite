@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavBar user="John Doe" :userId="1" />
+        <NavBar />
         <h2 for="search">Search</h2>
         <div class="box">
             <div class="search-container">
