@@ -35,7 +35,7 @@ export default {
       return "John Doe"
     },
     userId() {
-      return localStorage.getItem('user_id')
+      return localStorage.getItem('userId')
     }
   },
   mounted() {
@@ -85,8 +85,8 @@ export default {
   },
   created() {
     // TODO: Remove hard-coded user ID
-    const user_id = localStorage.getItem('user_id')
-    this.getFollowers(user_id);
+    const userId = localStorage.getItem('userId')
+    this.getFollowers(userId);
   }
 }
 </script>
