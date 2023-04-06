@@ -8,10 +8,11 @@
 - [x] Set up Flask
 - [x] Implement login
 - [x] Implement sign up
-- [ ] Add new code for fetching folowers in Vue
+- [ ] Add new code for fetching followers in Vue
+- [ ] Add new code for fetching following in Vue
 - [ ] Add remember me functionality
 - [ ] Implement logout
-
+- [ ] Get accurate total posts count, followers count, following count
 
 # Important
 - [ ] Add author and date to posts
