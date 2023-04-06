@@ -58,6 +58,9 @@ export default {
         // Save the user id in local storage
         localStorage.setItem('userId', response.data.userId)
 
+        // Save the user name in local storage
+        localStorage.setItem('userName', response.data.userName)
+
         // Redirect the user to the home page
         this.$router.push('/')
       })

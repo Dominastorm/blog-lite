@@ -1,7 +1,7 @@
 <template>
   <div class="top-bar">
     <div class="top-bar-left">
-      <h2>Welcome {{ user }}</h2>
+      <h2>Welcome {{ userName }}</h2>
     </div>
     <div class="top-bar-right">
       <router-link to="/search">Search</router-link>
@@ -17,8 +17,8 @@ export default {
     userId() {
       return localStorage.getItem('userId')
     },
-    user() {
-      return 'John Doe'
+    userName() {
+      return localStorage.getItem('userName')
     }
   },
   methods: {

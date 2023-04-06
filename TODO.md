@@ -10,7 +10,7 @@
 - [x] Implement login
 - [x] Implement sign up
 - [x] Add new code for fetching followers in Vue
-- [ ] Make NavBar get userId from localStorage
+- [x] Make NavBar get userId and userName from localStorage
 - [ ] Add new code for fetching following in Vue
 - [ ] Add remember me functionality
 - [ ] Implement logout
