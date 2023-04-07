@@ -1,39 +1,32 @@
-# Set up database
-- [x] Move models to models.py
-- [x] Test fetching followers in flask
-- [x] Test fetching followers in Vue
-- [x] Test login in Vue
+# Search
 - [ ] Get search results from the database
 
-# Flask + VueJS
-- [x] Set up Flask
-- [x] Implement login
-- [x] Implement sign up
-- [x] Add new code for fetching followers in Vue
-- [x] Make NavBar get userId and userName from localStorage
+# Followers/Following
 - [ ] Add new code for fetching following in Vue
+- [ ] Add functionality to follow/unfollow
+
+# Login/Logout
 - [ ] Add remember me functionality
 - [ ] Implement logout
-- [ ] Get accurate total posts count, followers count, following count
 - [ ] Use token for authentication
 
-# Important
+# Profile
+- [ ] Get accurate total posts count, followers count, following count
+
+# Posts
 - [ ] Add author and date to posts
-- [ ] Create BlogView
-- [ ] Connect Post List to BlogView 
-- [ ] Remove hardcoding of UserID in followers
-- [ ] Add Redis
-- [ ] Add Celery
+- [ ] Make feeds unique for users
 - [ ] Edit Post
 - [ ] Delete Post
 - [ ] Export Blog
 - [ ] Show blogs on feed based on timestamp (filter by users followed)
 - [ ] Let blog content handle HTML tag
+
+# Important
+- [ ] Add Redis
+- [ ] Add Celery
 - [ ] Add page protection
-- [ ] Delete all the HTML files created for Flask
-- [ ] Delete database directory
 - [ ] Change name to username
-- [ ] Make the feed unique
 
 # Jobs
 - [ ] Backend Jobs
@@ -51,6 +44,5 @@
 # Miscellaneous
 - [ ] Make the follow/unfollow button a component of its own
 - [ ] Restyle the top part of profile
-- [ ] Post editing functionality
 - [ ] Change colour of "Choose file" in CreatePostView
-
+- [ ] Add type hints to all functions
