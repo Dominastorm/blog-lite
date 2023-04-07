@@ -29,28 +29,7 @@ export default {
       following: [],
     }
   },
-  mounted() {
-    // Make an API call to get the IDs of all users that the logged-in user is currently following
-    // TODO: Replace with actual API response
-    const followingIds = [2, 3]
-
-    // Loop through the following array and update the followed property of each user accordingly
-    this.following.forEach((user) => {
-      user.followed = followingIds.includes(user.id)
-    })
-
-  },
   methods: {
-    unfollow(userId) {
-      // Send an API request to unfollow the user with the given ID
-      console.log('Unfollowing user', userId)
-
-      // Update the followed property of the respective user to false
-      const user = this.following.find((user) => user.id === userId)
-      if (user) {
-        user.followed = false
-      }
-    },
     getFollowing(userId) {
       const path = 'http://localhost:5000/following/' + userId;
       console.log(path)
