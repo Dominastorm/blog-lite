@@ -4,6 +4,7 @@
 # Followers/Following
 - [ ] Add new code for fetching following in Vue
 - [ ] Add functionality to follow/unfollow
+- [ ] Fix the follow/unfollow button in FollowingView
 
 # Login/Logout
 - [ ] Add remember me functionality

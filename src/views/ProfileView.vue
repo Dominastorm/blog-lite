@@ -8,8 +8,8 @@
       </div>
       <div class="profile-stats">
         <div>Total Posts: {{ totalPosts }}</div>
-        <div>Following: <router-link :to="'/following/' + userId">{{ followingCount }}</router-link></div>
-        <div>Followers: <router-link :to="'/followers/' + userId">{{ followersCount }}</router-link></div>
+        <div>Following: <router-link to="/following/">{{ followingCount }}</router-link></div>
+        <div>Followers: <router-link to="/followers/">{{ followersCount }}</router-link></div>
       </div>
     </div>
     <h3>My Posts</h3>

@@ -24,17 +24,17 @@ const router = createRouter({
       component: () => import('../views/FeedView.vue')
     },
     {
-      path: '/profile/:id',
+      path: '/profile/',
       name: 'profile',
       component: () => import('../views/ProfileView.vue')
     },
     {
-      path: '/following/:id',
+      path: '/following/',
       name: 'following',
       component: () => import('../views/FollowingView.vue')
     },
     {
-      path: '/followers/:id',
+      path: '/followers/',
       name: 'followers',
       component: () => import('../views/FollowersView.vue')
     },
