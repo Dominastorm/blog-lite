@@ -46,3 +46,5 @@
 - [ ] Restyle the top part of profile
 - [ ] Change colour of "Choose file" in CreatePostView
 - [ ] Add type hints to all functions
+- [ ] Remove unused imports
+- [ ] Remove unnecessary print statements

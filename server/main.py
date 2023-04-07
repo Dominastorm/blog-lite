@@ -32,3 +32,20 @@ def get_followers(user_id: int):
     follower_list = [{'id': row.id, 'name': row.name} for row in result]
     print(follower_list)
     return jsonify({'followers': follower_list}), 200
+
+@main.route('/following/<int:user_id>', methods=['GET'])
+def get_following(user_id: int):
+    print(user_id)
+    query = """
+        SELECT * 
+        FROM users 
+        WHERE id IN (
+            SELECT following_id 
+            FROM user_follows 
+            WHERE follower_id = :user_id
+        )
+    """
+    result = db.session.execute(text(query), {'user_id': user_id})
+    following_list = [{'id': row.id, 'name': row.name} for row in result]
+    print(following_list)
+    return jsonify({'following': following_list}), 200
