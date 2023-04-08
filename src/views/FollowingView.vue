@@ -4,10 +4,13 @@
     <h2>Following</h2>
     <div class="box">
       <ul>
-        <div v-for="user in following" :key="user.id" class="list-item">
-          <router-link class="link" :to="'/profile/' + user.id">{{ user.name }}</router-link>
-          <button class="button follow" v-if="!user.followed" @click="follow(user.id)">Follow</button>
-          <button class="button unfollow" v-else @click="unfollow(user.id)">Unfollow</button>
+        <div v-for="following in followings" :key="following.id" class="list-item">
+          <router-link class="link" :to="'/profile/' + following.id">{{ following.name }}</router-link>
+          <FollowToggle
+            :followed="following.followed"
+            :followerId="following.id"
+            @toggle-follow="following.followed = !following.followed"
+          />
         </div>
       </ul>
     </div>
@@ -17,16 +20,18 @@
 <script>
 import axios from 'axios'
 
-import NavBar from '@/components/NavBar.vue'
+import NavBar from '../components/NavBar.vue'
+import FollowToggle from '../components/FollowToggle.vue';
 
 export default {
   name: 'FollowingView',
   components: {
-    NavBar
-  },
+    NavBar,
+    FollowToggle
+},
   data() {
     return {
-      following: [],
+      followings: [],
     }
   },
   methods: {
@@ -37,7 +42,7 @@ export default {
         .get(path)
         .then((response) => {
           console.log(response.data);
-          this.following = response.data.following;
+          this.followings = response.data.following;
         })
         .catch((error) => {
           console.log(error)
