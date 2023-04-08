@@ -8,6 +8,7 @@
           <router-link class="link" :to="'/profile/' + follower.id">{{ follower.name }}</router-link>
           <FollowToggle
             :followed="follower.followed"
+            :followerId="follower.id"
             @toggle-follow="follower.followed = !follower.followed"
           />
         </div>

@@ -1,11 +1,14 @@
 # Search
 - [ ] Get search results from the database
 
-# Followers/Following
-- [x] Add new code for fetching following in Vue
-- [x] Add functionality to follow/unfollow
-- [ ] Fix the follow/unfollow button in FollowingView
-- [ ] Fix the follow/unfollow button in SearchView
+# FollowToggle
+- [x] Pass the userId to followToggle
+- [x] Create API in flask for follow requests
+- [x] Create API in flask for unfollow requests
+- [x] Call API from FollowToggle
+- [x] Update FollowToggle in FollowersView
+- [ ] Add FollowToggle to FollowingView
+- [ ] Add FollowToggle to SearchView
 
 # Login/Logout
 - [ ] Add remember me functionality

@@ -8,15 +8,53 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   props: {
     followed: {
       type: Boolean,
       required: true,
     },
+    followerId : {
+      type: String,
+      required: true,
+    }
+  },
+  computed: {
+    userId() {
+      return localStorage.getItem('userId')
+    },
   },
   methods: {
+    follow() {
+      const path = `http://localhost:5000/follow`
+      const params = "followerId=" + this.followerId + "&userId=" + this.userId
+      axios.post(path, params)
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    unfollow() {
+      const path = `http://localhost:5000/unfollow`
+      const params = "followerId=" + this.followerId + "&userId=" + this.userId
+      axios.post(path, params)
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
     toggleFollow() {
+      if (this.followed) {
+        this.unfollow()
+      } else {
+        this.follow()
+      }
       this.$emit('toggle-follow')
     },
   },
