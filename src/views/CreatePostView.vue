@@ -9,11 +9,7 @@
             </div>
             <div>
                 <label for="caption">Caption:</label>
-                <input type="text" id="caption" v-model="caption" required/>
-            </div>
-            <div>
-                <label for="body">Body:</label>
-                <textarea id="body" v-model="body" required></textarea>
+                <textarea id="caption" v-model="body" required></textarea>
             </div>
             <div class="upload">
                 <label for="image">Image:</label>
@@ -139,17 +135,16 @@ input[type="file"] {
     width: auto;
 }
 
-input[type="file"]:hover {
-    /* Slightly darker shade of dark blue */
-    background-color: #34495e;
-}
-
 .upload {
     display: flex;
     flex-direction: column;
     justify-content: left;
     align-items: left;
-    
+     
+}
+
+#image {
+    color: black;
 }
 
 img {

@@ -18,22 +18,23 @@
 # Profile
 - [x] Make profiles unique for users (add :id to index.js)
 - [x] Get accurate total posts count, followers count, following count
-- [ ] Get posts data from database
 
 # Posts
+- [ ] Show blogs on feed based on timestamp (filter by users followed)
+- [ ] Make sure blog content supports UTF-8 characters
+- [ ] Abstract out the PostList component
+- [ ] Add the PostList component to the Profile 
 - [ ] Add author and date to posts
 - [ ] Make feeds unique for users
-- [ ] Edit Post
-- [ ] Delete Post
-- [ ] Export Blog
-- [ ] Show blogs on feed based on timestamp (filter by users followed)
+- [ ] Edit Post functionality  
+- [ ] Delete Post functionality
+- [ ] Export Blog functionality
 - [ ] Let blog content handle HTML tag
 
 # Important
 - [ ] Add Redis
 - [ ] Add Celery
 - [ ] Add page protection
-- [ ] Change name to username
 - [ ] If users try to access any page without logging in, redirect them to login page
 
 # Jobs
@@ -52,9 +53,10 @@
 # Miscellaneous
 - [ ] Make the follow/unfollow button a component of its own
 - [ ] Restyle the top part of profile
-- [ ] Change colour of "Choose file" in CreatePostView
+- [x] Change colour of "Choose file" in CreatePostView
 - [ ] Add type hints to all functions
 - [ ] Remove unused imports
 - [ ] Remove unnecessary print statements
 - [ ] Make styling global
 - [ ] Use token for authentication
+- [ ] Archive blogs
