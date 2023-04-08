@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 import PostList from '../components/PostList.vue';
 import NavBar from '../components/NavBar.vue';
 
@@ -28,12 +30,11 @@ export default {
   },
   data() {
     return { 
-      username: 'exampleuser',
       userId: 1, // replace with your user ID
       profileImage: '/assets/dominastorm.jpeg', // replace with your profile image URL
-      totalPosts: 10, // replace with your total posts count
-      followingCount: 5, // replace with your following count
-      followersCount: 8, // replace with your followers count
+      totalPosts: 0, // replace with your total posts count
+      followingCount: 0, // replace with your following count
+      followersCount: 0, // replace with your followers count
       posts: [
         {
           id: 1,
@@ -52,6 +53,28 @@ export default {
         // Add more posts here
       ]
     }
+  },
+  methods: {
+    getProfile(userId) {
+      const path = 'http://localhost:5000/profile/' + userId;
+      axios
+        .get(path)
+        .then((response) => {
+          console.log(response.data);
+          const profileDetails = response.data.profileDetails;
+          this.totalPosts = profileDetails.totalPosts;
+          this.followingCount = profileDetails.followingCount;
+          this.followersCount = profileDetails.followersCount;
+          console.log(response.data.profileDetails)
+        })
+        .catch((error) => {
+          console.log(error)
+        })  
+    }
+  },
+  created() {
+    const userId = localStorage.getItem('userId');
+    this.getProfile(userId);
   }
 }
 </script>

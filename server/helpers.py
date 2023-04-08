@@ -42,3 +42,13 @@ def get_search_results(user_id: int, search_query: str) -> List[Dict[str, Union[
     search_results = [{'id': row.id, 'name': row.name, 'followed': True if row.id in following_ids else False} for row in result]
     return search_results
     
+def get_profile_details(user_id: int) -> Dict[str, Union[str, int, bool]]:
+    query = """
+        SELECT * 
+        FROM users 
+        WHERE id = :user_id
+    """
+    result = db.session.execute(text(query), {'user_id': user_id}).first()
+    profile_details = {'totalPosts': result.posts, 'followersCount': result.followers_count, 'followingCount': result.following_count}
+    return profile_details
+    

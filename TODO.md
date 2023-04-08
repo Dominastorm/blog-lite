@@ -17,8 +17,9 @@
 - [ ] Use token for authentication
 
 # Profile
-- [ ] Make profiles unique for users (add :name to index.js)
-- [ ] Get accurate total posts count, followers count, following count
+- [ ] Make profiles unique for users (add :id to index.js)
+- [x] Get accurate total posts count, followers count, following count
+- [ ] Get posts data from database
 
 # Posts
 - [ ] Add author and date to posts

@@ -1,20 +1,14 @@
 from flask import jsonify, Blueprint, render_template, request
 from flask_login import login_required, current_user
 
-from server.helpers import get_follower_list, get_following_list, get_search_results
+from server.helpers import get_follower_list, get_following_list, get_search_results, get_profile_details
 
 from .models import User, UserFollows
 from . import db
 
 main = Blueprint('main', __name__)
 
-@main.route('/')
-def index():
-    return render_template('index.html')
-
-@main.route('/profile')
-def profile():
-    return render_template('profile.html', name=current_user.name)
+# GET functions
 
 @main.route('/followers/<int:user_id>', methods=['GET'])
 def get_followers(user_id: int):
@@ -29,8 +23,14 @@ def get_following(user_id: int):
 @main.route('/search/<int:user_id>/<string:search_query>', methods=['GET'])
 def search_users(user_id: int, search_query: str):
     search_results = get_search_results(user_id, search_query)
-    print(search_results)
     return jsonify({'searchResults': search_results}), 200
+
+@main.route('/profile/<int:user_id>', methods=['GET'])
+def get_profile(user_id: int):
+    profile_details = get_profile_details(user_id)
+    return jsonify({'profileDetails': profile_details}), 200
+
+# POST functions
 
 @main.route('/follow/', methods=['POST'])
 def follow_user():
