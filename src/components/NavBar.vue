@@ -5,6 +5,7 @@
     </div>
     <div class="top-bar-right">
       <router-link to="/">Home</router-link>
+      <router-link to="createpost">Create Post</router-link>
       <router-link to="/search">Search</router-link>
       <router-link :to="/profile/ + userId">My Profile</router-link>
       <a href="/login" @click="logout">Logout</a>
@@ -42,8 +43,21 @@ export default {
 }
 .top-bar-right {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
 }
+
+.top-bar-right > *:not(:last-child)::after {
+  content: "";
+  border-right: 1px solid white;
+  margin-left: 2rem;
+  height: 1rem;
+  align-self: center;
+}
+
+.top-bar-right *::last {
+  margin-left: 1rem;
+}
+
 .top-bar-right a {
   color: #fff;
   text-decoration: none;
