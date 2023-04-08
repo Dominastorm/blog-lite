@@ -45,6 +45,14 @@ def follow_user():
     # Follow the user
     new_follow = UserFollows(follower_id=user_id, following_id=follow_id)
     db.session.add(new_follow)
+
+    # Increment the following and follower count
+    user = User.query.filter_by(id=user_id).first()
+    user.following_count += 1
+
+    followed = User.query.filter_by(id=follow_id).first()
+    followed.followers_count += 1
+
     db.session.commit()
     
     return jsonify({'message': 'User followed successfully.'}), 200
@@ -62,6 +70,14 @@ def unfollow_user():
 
     # Unfollow the user
     db.session.delete(unfollow)
+
+    # Decrement the following and follower count
+    user = User.query.filter_by(id=user_id).first()
+    user.following_count -= 1
+
+    unfollowed = User.query.filter_by(id=unfollow_id).first()
+    unfollowed.followers_count -= 1
+
     db.session.commit()
     
     return jsonify({'message': 'User unfollowed successfully.'}), 200
