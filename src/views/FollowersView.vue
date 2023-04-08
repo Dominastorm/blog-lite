@@ -60,7 +60,7 @@ export default {
 <style>
 body {
     background-color: #2c3e50;
-    /* D    # login_user(user, remember=remember)ark blue */
+    /* Dark blue */
     color: #fff;
     font-family: sans-serif;
 }
