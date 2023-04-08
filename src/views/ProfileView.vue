@@ -8,8 +8,8 @@
       </div>
       <div class="profile-stats">
         <div>Total Posts: {{ totalPosts }}</div>
-        <div>Following: <router-link to="/following/">{{ followingCount }}</router-link></div>
-        <div>Followers: <router-link to="/followers/">{{ followersCount }}</router-link></div>
+        <div>Following: <router-link :to="/following/ + userId">{{ followingCount }}</router-link></div>
+        <div>Followers: <router-link :to="/followers/ + userId">{{ followersCount }}</router-link></div>
       </div>
     </div>
     <h3>My Posts</h3>
@@ -30,11 +30,11 @@ export default {
   },
   data() {
     return { 
-      userId: 1, // replace with your user ID
+      userId: 0, 
       profileImage: '/assets/dominastorm.jpeg', // replace with your profile image URL
-      totalPosts: 0, // replace with your total posts count
-      followingCount: 0, // replace with your following count
-      followersCount: 0, // replace with your followers count
+      totalPosts: 0, 
+      followingCount: 0, 
+      followersCount: 0,
       posts: [
         {
           id: 1,
@@ -73,7 +73,7 @@ export default {
     }
   },
   created() {
-    const userId = localStorage.getItem('userId');
+    const userId = window.location.href.split('/').pop()
     this.getProfile(userId);
   }
 }

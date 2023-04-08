@@ -50,7 +50,7 @@ export default {
     }
   },
   created() {
-    const userId = localStorage.getItem('userId')
+    const userId = window.location.href.split('/').pop()
     this.getFollowing(userId);
   }
 }

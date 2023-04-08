@@ -38,7 +38,6 @@ export default {
   methods: {
     getFollowers(userId) {
       const path = 'http://localhost:5000/followers/' +  userId;
-      console.log(path)
       axios
         .get(path)
         .then((response) => {
@@ -51,7 +50,7 @@ export default {
     }
   },
   created() {
-    const userId = localStorage.getItem('userId')
+    const userId = window.location.href.split('/').pop()
     this.getFollowers(userId);
   }
 }

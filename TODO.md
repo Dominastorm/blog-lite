@@ -12,12 +12,11 @@
 - [x] Add FollowToggle to SearchView
 
 # Login/Logout
-- [ ] Add remember me functionality
+- [x] Add remember me functionality
 - [x] Implement logout
-- [ ] Use token for authentication
 
 # Profile
-- [ ] Make profiles unique for users (add :id to index.js)
+- [x] Make profiles unique for users (add :id to index.js)
 - [x] Get accurate total posts count, followers count, following count
 - [ ] Get posts data from database
 
@@ -58,3 +57,4 @@
 - [ ] Remove unused imports
 - [ ] Remove unnecessary print statements
 - [ ] Make styling global
+- [ ] Use token for authentication
