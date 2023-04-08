@@ -11,7 +11,8 @@ class User(UserMixin, db.Model):
     email =db.Column(db.String(100), unique=True)
     name = db.Column(db.String(100))
     password = db.Column(db.String(100))
-    followers = db.Column(db.Integer, nullable=True, default=0)
+    followers_count = db.Column(db.Integer, nullable=True, default=0)
+    following_count = db.Column(db.Integer, nullable=True, default=0)
     posts = db.Column(db.Integer, nullable=True, default=0)
 
 class Posts(db.Model):
@@ -20,7 +21,7 @@ class Posts(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
-    caption = db.Column(db.String(100), nullable=False)
+    caption = db.Column(db.String(255), nullable=False)
     image_url = db.Column(db.String(255), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
