@@ -1,5 +1,6 @@
 # Search
-- [ ] Get search results from the database
+- [x] Get search results from the database
+- [ ] Add followed field to search results
 
 # FollowToggle
 - [x] Pass the userId to followToggle
@@ -7,7 +8,7 @@
 - [x] Create API in flask for unfollow requests
 - [x] Call API from FollowToggle
 - [x] Update FollowToggle in FollowersView
-- [ ] Add FollowToggle to FollowingView
+- [x] Add FollowToggle to FollowingView
 - [ ] Add FollowToggle to SearchView
 
 # Login/Logout
@@ -32,6 +33,7 @@
 - [ ] Add Celery
 - [ ] Add page protection
 - [ ] Change name to username
+- [ ] If users try to access any page without logging in, redirect them to login page
 
 # Jobs
 - [ ] Backend Jobs
@@ -53,3 +55,4 @@
 - [ ] Add type hints to all functions
 - [ ] Remove unused imports
 - [ ] Remove unnecessary print statements
+- [ ] Make styling global

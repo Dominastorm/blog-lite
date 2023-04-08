@@ -1,7 +1,7 @@
 from flask import jsonify, Blueprint, render_template, request
 from flask_login import login_required, current_user
 
-from server.helpers import get_follower_list, get_following_list
+from server.helpers import get_follower_list, get_following_list, get_search_results
 
 from .models import User, UserFollows
 from . import db
@@ -25,6 +25,12 @@ def get_followers(user_id: int):
 def get_following(user_id: int):
     following_list = get_following_list(user_id)
     return jsonify({'following': following_list}), 200
+
+@main.route('/search/<string:search_query>', methods=['GET'])
+def search_users(search_query: str):
+    search_results = get_search_results(search_query)
+    print(search_results)
+    return jsonify({'searchResults': search_results}), 200
 
 @main.route('/follow/', methods=['POST'])
 def follow_user():

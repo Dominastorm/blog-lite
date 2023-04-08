@@ -8,8 +8,8 @@
                 <span class="search-placeholder" v-show="!searchText"> Search users...</span>
             </div>
             <ul>
-                <div class="list-item" v-for="user in filteredUsers" :key="user.id">
-                    <router-link class="link" :to="'/profile/' + user.id">{{ user.username }}</router-link>
+                <div class="list-item" v-for="user in users" :key="user.id">
+                    <router-link class="link" :to="'/profile/' + user.id">{{ user.name }}</router-link>
                     <button class="button" @click="follow(user)">{{ following.includes(user.id) ? 'Unfollow' : 'Follow' }}</button>
                 </div>
             </ul>
@@ -18,6 +18,8 @@
 </template>
   
 <script>
+import axios from 'axios'
+
 import NavBar from '@/components/NavBar.vue'
 
 export default {
@@ -26,39 +28,22 @@ export default {
     },
     data() {
         return {
-            users: [
-                { id: 1, username: 'user1' },
-                { id: 2, username: 'user2' },
-                { id: 3, username: 'user3' },
-                { id: 4, username: 'user4' },
-                { id: 5, username: 'user5' },
-            ],
-            following: [1, 3, 5],
             searchText: '',
+            users: [],
+            following: [],
         }
     },
-    computed: {
-        filteredUsers() {
-            if (this.searchText) {
-                return this.users.filter((user) =>
-                    user.username.toLowerCase().includes(this.searchText.toLowerCase())
-                )
-            } else {
-                return this.users
-            }
-        },
-    },
     methods: {
-        follow(user) {
-            if (this.following.includes(user.id)) {
-                this.following.splice(this.following.indexOf(user.id), 1)
-            } else {
-                this.following.push(user.id)
-            }
-        },
         searchUsers() {
-            // You can make an API call to search for users based on the searchText
-            // and update the users array accordingly
+            const path = 'http://localhost:5000/search/' + this.searchText;
+            axios
+                .get(path)
+                .then((response) => {
+                    this.users = response.data.searchResults;
+                })
+                .catch(() => {
+                    this.users = [];
+                })
         },
     },
 }
