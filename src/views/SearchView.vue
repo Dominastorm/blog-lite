@@ -10,7 +10,11 @@
             <ul>
                 <div class="list-item" v-for="user in users" :key="user.id">
                     <router-link class="link" :to="'/profile/' + user.id">{{ user.name }}</router-link>
-                    <button class="button" @click="follow(user)">{{ following.includes(user.id) ? 'Unfollow' : 'Follow' }}</button>
+                    <FollowToggle
+                        :followed="user.followed"
+                        :followerId="user.id"
+                        @toggle-follow="user.followed = !user.followed"
+                    />
                 </div>
             </ul>
         </div>
@@ -20,11 +24,13 @@
 <script>
 import axios from 'axios'
 
+import FollowToggle from '../components/FollowToggle.vue'
 import NavBar from '@/components/NavBar.vue'
 
 export default {
     components: {
-        NavBar
+        NavBar,
+        FollowToggle
     },
     data() {
         return {

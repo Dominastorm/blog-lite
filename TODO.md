@@ -9,7 +9,7 @@
 - [x] Call API from FollowToggle
 - [x] Update FollowToggle in FollowersView
 - [x] Add FollowToggle to FollowingView
-- [ ] Add FollowToggle to SearchView
+- [x] Add FollowToggle to SearchView
 
 # Login/Logout
 - [ ] Add remember me functionality
@@ -17,6 +17,7 @@
 - [ ] Use token for authentication
 
 # Profile
+- [ ] Make profiles unique for users (add :id to index.js)
 - [ ] Get accurate total posts count, followers count, following count
 
 # Posts
