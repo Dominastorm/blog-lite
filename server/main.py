@@ -1,8 +1,7 @@
-from typing import Dict, List, Union
 from flask import jsonify, Blueprint, render_template, request
 from flask_login import login_required, current_user
 
-from sqlalchemy import select, text
+from server.helpers import get_follower_list, get_following_list
 
 from .models import User, UserFollows
 from . import db
@@ -16,35 +15,6 @@ def index():
 @main.route('/profile')
 def profile():
     return render_template('profile.html', name=current_user.name)
-
-def get_following_list(user_id: int) -> List[Dict[str, Union[str, int, bool]]]:
-    query = """
-        SELECT * 
-        FROM users 
-        WHERE id IN (
-            SELECT following_id 
-            FROM user_follows 
-            WHERE follower_id = :user_id
-        )
-    """
-    result = db.session.execute(text(query), {'user_id': user_id})
-    following_list = [{'id': row.id, 'name': row.name, 'followed': True} for row in result]
-    return following_list
-
-def get_follower_list(user_id: int) -> List[Dict[str, Union[str, int, bool]]]:
-    query = """
-        SELECT * 
-        FROM users 
-        WHERE id IN (
-            SELECT follower_id 
-            FROM user_follows 
-            WHERE following_id = :user_id
-        )
-    """
-    result = db.session.execute(text(query), {'user_id': user_id})
-    following_ids = [row['id'] for row in get_following_list(user_id)]
-    follower_list = [{'id': row.id, 'name': row.name, 'followed': True if row.id in following_ids else False} for row in result]
-    return follower_list
 
 @main.route('/followers/<int:user_id>', methods=['GET'])
 def get_followers(user_id: int):
