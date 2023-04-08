@@ -51,6 +51,12 @@ def follow_user():
     user_id = request.form.get('userId')
     follow_id = request.form.get('followerId')
     
+    # Handle case where already following user
+    already_followed = UserFollows.query.filter_by(follower_id=user_id, following_id=follow_id).first()
+    if already_followed:
+        return jsonify({'message': 'User already followed.'}), 200
+    
+    # Follow the user
     new_follow = UserFollows(follower_id=user_id, following_id=follow_id)
     db.session.add(new_follow)
     db.session.commit()
@@ -63,6 +69,12 @@ def unfollow_user():
     unfollow_id = request.form.get('followerId')
     
     unfollow = UserFollows.query.filter_by(follower_id=user_id, following_id=unfollow_id).first()
+
+    # Handle case where already not following user
+    if not unfollow:
+        return jsonify({'message': 'User already unfollowed.'}), 200
+
+    # Unfollow the user er already fer already f
     db.session.delete(unfollow)
     db.session.commit()
     
