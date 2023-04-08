@@ -4,6 +4,7 @@
       <h2>Welcome {{ userName }}</h2>
     </div>
     <div class="top-bar-right">
+      <router-link to="/">Home</router-link>
       <router-link to="/search">Search</router-link>
       <router-link :to="/profile/ + userId">My Profile</router-link>
       <a href="/login" @click="logout">Logout</a>
