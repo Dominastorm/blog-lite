@@ -8,8 +8,8 @@
       </div>
       <div class="profile-stats">
         <div>Total Posts: {{ totalPosts }}</div>
-        <div>Following: <router-link :to="/following/ + userId">{{ followingCount }}</router-link></div>
-        <div>Followers: <router-link :to="/followers/ + userId">{{ followersCount }}</router-link></div>
+        <div>Following: <router-link :to="/following/ + userId" style="color: white">{{ followingCount }}</router-link></div>
+        <div>Followers: <router-link :to="/followers/ + userId" style="color: white">{{ followersCount }}</router-link></div>
       </div>
     </div>
     <h3>My Posts</h3>
@@ -28,9 +28,13 @@ export default {
     PostList,
     NavBar
   },
+  computed: {
+    userId() {
+      return window.location.href.split('/').pop();
+    }
+  },
   data() {
     return { 
-      userId: 0, 
       profileImage: '/assets/dominastorm.jpeg', // replace with your profile image URL
       totalPosts: 0, 
       followingCount: 0, 
@@ -73,8 +77,7 @@ export default {
     }
   },
   created() {
-    const userId = window.location.href.split('/').pop()
-    this.getProfile(userId);
+    this.getProfile(this.userId);
   }
 }
 </script>
