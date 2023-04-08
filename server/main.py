@@ -26,9 +26,9 @@ def get_following(user_id: int):
     following_list = get_following_list(user_id)
     return jsonify({'following': following_list}), 200
 
-@main.route('/search/<string:search_query>', methods=['GET'])
-def search_users(search_query: str):
-    search_results = get_search_results(search_query)
+@main.route('/search/<int:user_id>/<string:search_query>', methods=['GET'])
+def search_users(user_id: int, search_query: str):
+    search_results = get_search_results(user_id, search_query)
     print(search_results)
     return jsonify({'searchResults': search_results}), 200
 

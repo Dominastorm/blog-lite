@@ -33,9 +33,14 @@ export default {
             following: [],
         }
     },
+    computed: {
+        userId() {
+            return localStorage.getItem('userId')
+        },
+    },
     methods: {
         searchUsers() {
-            const path = 'http://localhost:5000/search/' + this.searchText;
+            const path = 'http://localhost:5000/search/' + this.userId + '/' + this.searchText;
             axios
                 .get(path)
                 .then((response) => {

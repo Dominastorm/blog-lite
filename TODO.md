@@ -1,6 +1,6 @@
 # Search
 - [x] Get search results from the database
-- [ ] Add followed field to search results
+- [x] Add followed field to search results
 
 # FollowToggle
 - [x] Pass the userId to followToggle

@@ -31,13 +31,14 @@ def get_follower_list(user_id: int) -> List[Dict[str, Union[str, int, bool]]]:
     follower_list = [{'id': row.id, 'name': row.name, 'followed': True if row.id in following_ids else False} for row in result]
     return follower_list
 
-def get_search_results(search_query: str) -> List[Dict[str, Union[str, int, bool]]]:
+def get_search_results(user_id: int, search_query: str) -> List[Dict[str, Union[str, int, bool]]]:
     query = """
         SELECT * 
         FROM users 
         WHERE name LIKE :search_query
     """
     result = db.session.execute(text(query), {'search_query': f'%{search_query}%'})
-    search_results = [{'id': row.id, 'name': row.name, 'followed': False} for row in result]
+    following_ids = [row['id'] for row in get_following_list(user_id)]
+    search_results = [{'id': row.id, 'name': row.name, 'followed': True if row.id in following_ids else False} for row in result]
     return search_results
     
