@@ -23,8 +23,8 @@ export default {
   },
   methods: {
     logout() {
-      // Your logout logic goes here
-      console.log('Logging out...')
+      localStorage.removeItem('userId')
+      localStorage.removeItem('userName')
     }
   }
 }

@@ -13,11 +13,11 @@
 
 # Login/Logout
 - [ ] Add remember me functionality
-- [ ] Implement logout
+- [x] Implement logout
 - [ ] Use token for authentication
 
 # Profile
-- [ ] Make profiles unique for users (add :id to index.js)
+- [ ] Make profiles unique for users (add :name to index.js)
 - [ ] Get accurate total posts count, followers count, following count
 
 # Posts
