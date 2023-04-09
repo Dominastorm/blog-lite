@@ -1,7 +1,7 @@
 from flask import jsonify, Blueprint, render_template, request
 from flask_login import login_required, current_user
 
-from server.helpers import get_feed_details, get_follower_list, get_following_list, get_my_posts_details, get_post_details, get_search_results, get_profile_details
+from server.helpers import get_feed_details, get_follower_list, get_following_list, get_my_latest_post_timestamp, get_my_posts_details, get_post_details, get_search_results, get_profile_details
 
 from .models import Posts, User, UserFollows
 from . import db
@@ -43,6 +43,11 @@ def get_feed(user_id: int):
 def get_my_posts(user_id: int):
     post_list = get_my_posts_details(user_id)
     return jsonify({'posts': post_list}), 200
+
+@main.route('/mylatestpost/<int:user_id>', methods=['GET'])
+def get_my_latest_post(user_id: int):
+    post = get_my_latest_post_timestamp(user_id)
+    return jsonify({'post': post}), 200
 
 # POST functions
 @main.route('/follow/', methods=['POST'])

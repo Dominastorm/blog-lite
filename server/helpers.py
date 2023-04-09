@@ -115,3 +115,16 @@ def get_my_posts_details(user_id: int) -> List[Dict[str, Union[str, int, bool]]]
     user_result = db.session.execute(text(user_query), {'user_id': user_id}).first()
     feed_details = [{'id': row.id, 'userId': row.user_id, 'title': row.title, 'caption': row.caption, 'image': row.image_url, 'timestamp': row.timestamp, 'username' : user_result.name} for row in result]
     return feed_details
+
+def get_my_latest_post_timestamp(user_id: int) -> Dict[str, Union[str, int, bool]]:
+    query = """
+        SELECT timestamp 
+        FROM posts 
+        WHERE user_id = :user_id
+        ORDER BY timestamp DESC
+        LIMIT 1
+    """
+    result = db.session.execute(text(query), {'user_id': user_id}).first()
+    if result is None:
+        return {'timestamp': None}
+    return {'timestamp': result.timestamp}
