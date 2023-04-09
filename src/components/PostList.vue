@@ -4,7 +4,7 @@
       <router-link :to="'/post/' + post.id" style="text-decoration: none;">
         <img :src="post.image" alt="Post Image">
         <h4>{{ post.title }}</h4>
-        <p>{{ post.caption }}</p>
+        <p v-html="post.caption"></p>
       </router-link>
     </div>
   </div>
