@@ -20,8 +20,16 @@
 - [x] Get accurate total posts count, followers count, following count
 
 # CreatePostView
-- [ ] Make API function to create a post
+- [x] Make API function to create a post
+- [x] Connect API with Vue
 - [ ] Open the post once created
+
+# Create pages/components
+- [ ] PostList
+- [ ] PostView
+- [ ] Feed
+- [ ] Insert PostList into feed
+- [ ] Insert PostList into profile
 
 # Posts
 - [ ] Show blogs on feed based on timestamp (filter by users followed)
