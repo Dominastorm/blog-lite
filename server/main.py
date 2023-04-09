@@ -108,3 +108,23 @@ def create_post():
     db.session.commit()
     
     return jsonify({'message': 'Post created successfully.', 'postId' : new_post.id}), 200
+
+@main.route('/editpost/', methods=['POST'])
+def edit_post():
+    user_id = request.form.get('userId')
+    post_id = request.form.get('postId')
+    title = request.form.get('title')
+    caption = request.form.get('caption')
+    image = request.form.get('image')
+
+    # Edit the post if the user is the owner
+    post = Posts.query.filter_by(id=post_id).first()
+    if post.user_id != int(user_id):
+        return jsonify({'message': 'User is not the owner of the post.'}), 403
+    
+    post.title = title
+    post.caption = caption
+    post.image_url = image
+    db.session.commit()
+    
+    return jsonify({'message': 'Post edited successfully.'}), 200

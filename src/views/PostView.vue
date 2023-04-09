@@ -3,8 +3,8 @@
   <!-- if myUserId is same as userId, display edit, delete and export buttons -->
   <div class="post-container">
     <div class="buttons">
-      <button v-if="myUserId == userId" class="edit button" v-on:click="$router.push('/edit/' + postId)">Edit</button>
-      <button v-if="myUserId == userId" class="delete button" v-on:click="$router.push('/delete/' + postId)">Delete</button>
+      <button v-if="myUserId == userId" class="edit button" v-on:click="$router.push('/editpost/' + postId)">Edit</button>
+      <button v-if="myUserId == userId" class="delete button" v-on:click="$router.push('/deletepost/' + postId)">Delete</button>
       <button class="export button" v-on:click="$router.push('/export/' + postId)">Export</button>
     </div>
     <h2>{{ title }}</h2>
