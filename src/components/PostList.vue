@@ -1,9 +1,11 @@
 <template>
   <div class="post-list">
     <div v-for="post in posts" :key="post.id" class="post">
-      <img :src="post.image" alt="Post Image">
-      <h4>{{ post.title }}</h4>
-      <p>{{ post.caption }}</p>
+      <router-link :to="'/post/' + post.id" style="text-decoration: none;">
+        <img :src="post.image" alt="Post Image">
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.caption }}</p>
+      </router-link>
     </div>
   </div>
 </template>
@@ -76,6 +78,7 @@ export default {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  
 }
 
 .post p {
@@ -83,4 +86,3 @@ export default {
   margin-bottom: 1rem;
 }
 </style>
-  

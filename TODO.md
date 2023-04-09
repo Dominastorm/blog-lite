@@ -29,7 +29,7 @@
 - [x] PostView
 - [x] Feed
 - [x] Insert PostList into feed
-- [ ] Link PostList posts to PostView
+- [x] Link PostList posts to PostView
 - [ ] Insert PostList into profile
 - [x] Link the username in the post to the profile
 
