@@ -44,7 +44,7 @@
 - [x] Delete Post functionality
 - [x] Export Blog functionality
 - [x] Let blog content handle HTML tag
-- [ ] Fix posts count
+- [x] Fix posts count
 - [ ] Add Export all posts option
 
 # Requests

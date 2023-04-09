@@ -105,6 +105,11 @@ def create_post():
     # Create the post
     new_post = Posts(user_id=user_id, title=title, caption=caption, image_url=image)
     db.session.add(new_post)
+
+    # Increment the post count
+    user = User.query.filter_by(id=user_id).first()
+    user.posts += 1
+    
     db.session.commit()
     
     return jsonify({'message': 'Post created successfully.', 'postId' : new_post.id}), 200
@@ -140,6 +145,11 @@ def delete_post():
         return jsonify({'message': 'User is not the owner of the post.'}), 403
     
     db.session.delete(post)
+
+    # Decrement the post count
+    user = User.query.filter_by(id=user_id).first()
+    user.posts -= 1
+
     db.session.commit()
     
     return jsonify({'message': 'Post deleted successfully.'}), 200
