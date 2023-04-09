@@ -49,8 +49,7 @@ export default {
             const params = "userId=" + this.userId + "&title=" + this.title + "&caption=" + this.caption + "&image=" + this.image;
             axios.post(path, params)
                 .then((response) => {
-                    console.log(response);
-                    this.$router.push('/feed');
+                    this.$router.push('/post/' + response.data.postId);
                 })
                 .catch((error) => {
                     console.log(error);

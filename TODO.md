@@ -22,7 +22,7 @@
 # CreatePostView
 - [x] Make API function to create a post
 - [x] Connect API with Vue
-- [ ] Open the post once created
+- [x] Open the post once created
 
 # Create pages/components
 - [x] PostList
@@ -30,7 +30,7 @@
 - [x] Feed
 - [x] Insert PostList into feed
 - [x] Link PostList posts to PostView
-- [ ] Insert PostList into profile
+- [x] Insert PostList into profile
 - [x] Link the username in the post to the profile
 
 # Posts
@@ -58,11 +58,11 @@
 - [ ] Alert Jobs
 
 # Requests
-- [ ] Add a request to get the user's feed
-- [ ] Add a request to get the user's profile
-- [ ] Add a request to get the user's followers
-- [ ] Add a request to get the user's following
-- [ ] Add a request to get the user's posts
+- [x] Add a request to get the user's feed
+- [x] Add a request to get the user's profile
+- [x] Add a request to get the user's followers
+- [x] Add a request to get the user's following
+- [x] Add a request to get the user's posts
 
 # Miscellaneous
 - [x] Make the follow/unfollow button a component of its own

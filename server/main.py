@@ -106,5 +106,5 @@ def create_post():
     new_post = Posts(user_id=user_id, title=title, caption=caption, image_url=image)
     db.session.add(new_post)
     db.session.commit()
-
-    return jsonify({'message': 'Post created successfully.'}), 200
+    
+    return jsonify({'message': 'Post created successfully.', 'postId' : new_post.id}), 200
