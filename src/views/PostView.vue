@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <NavBar />
+  <NavBar />
+  <div class="post-container">
     <h2>{{ title }}</h2>
-    <img :src="image" alt="Post image">
-    <p>Posted by: {{ username }}</p>
-    <p>Created on: {{ timestamp.split(' ')[0] }}</p>
-    <p>{{ body }}</p>
+    <img class="post-image" :src="image" alt="Post image">
+    <br />
+    <p class="post-info">Posted by: {{ username }}</p>
+    <p class="post-info">Created on: {{ timestamp.split(' ')[0] }}</p>
+    <br />
+    <p class="post-caption">{{ caption }}</p>
   </div>
 </template>
 
@@ -56,13 +58,48 @@ export default {
 
 </script>
 
- 
 <style>
+.post-container {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 80%;
+  max-height: 100%;
+  background-color: rgb(206, 212, 219);
+  box-shadow: 0px 0px 10px #ccc;
+  border-radius: 5px;
+}
+
+.post-image {
+  display: block;
+  max-width: 100%;
+  /* margin: 20px 0; */
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px #ccc;
+}
+
+.post-info {
+  text-align: center;
+  display: block;
+  font-size: 16px;
+  color: #5d5d5d;
+}
+
+.post-body {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-top: 20px;
+  color: #333;
+}
+
 body {
   /* Dark blue */
   background-color: #2c3e50;
-  color: #fff;
+  color: #000000;
   font-family: sans-serif;
+  font-size: 26px;
+  text-align: center;
 }
 
 h2 {
@@ -70,12 +107,5 @@ h2 {
   font-weight: bold;
   margin-bottom: 1rem;
   text-align: center;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-top: 1rem;
 }
 </style>  
