@@ -4,7 +4,7 @@
   <div class="post-container">
     <div class="buttons">
       <button v-if="myUserId == userId" class="edit button" v-on:click="$router.push('/editpost/' + postId)">Edit</button>
-      <button v-if="myUserId == userId" class="delete button" v-on:click="$router.push('/deletepost/' + postId)">Delete</button>
+      <button v-if="myUserId == userId" class="delete button" v-on:click="deletePost">Delete</button>
       <button class="export button" v-on:click="$router.push('/export/' + postId)">Export</button>
     </div>
     <h2>{{ title }}</h2>
@@ -56,6 +56,18 @@ export default {
           this.caption = post.caption;
           this.username = post.username;
           this.timestamp = post.timestamp;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    deletePost() {
+      const path = `http://localhost:5000/deletepost/`;
+      const params = "userId=" + this.userId + "&postId=" + this.postId;
+      axios.post(path, params)
+        .then(response => {
+          console.log(response);
+          this.$router.push('/');
         })
         .catch(error => {
           console.log(error);

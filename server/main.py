@@ -128,3 +128,18 @@ def edit_post():
     db.session.commit()
     
     return jsonify({'message': 'Post edited successfully.'}), 200
+
+@main.route('/deletepost/', methods=['POST'])
+def delete_post():
+    user_id = request.form.get('userId')
+    post_id = request.form.get('postId')
+
+    # Delete the post if the user is the owner
+    post = Posts.query.filter_by(id=post_id).first()
+    if post.user_id != int(user_id):
+        return jsonify({'message': 'User is not the owner of the post.'}), 403
+    
+    db.session.delete(post)
+    db.session.commit()
+    
+    return jsonify({'message': 'Post deleted successfully.'}), 200
