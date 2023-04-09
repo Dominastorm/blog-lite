@@ -39,23 +39,6 @@ export default {
       totalPosts: 0, 
       followingCount: 0, 
       followersCount: 0,
-      posts: [
-        {
-          id: 1,
-          title: 'First Post',
-          caption: 'My first post',
-          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-          image: '/assets/one.jpg' // replace with your post image URL
-        },
-        {
-          id: 2,
-          title: 'Second Post',
-          caption: 'My second post',
-          content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          image: '/assets/two.jpg' // replace with your post image URL
-        },
-        // Add more posts here
-      ]
     }
   },
   methods: {
