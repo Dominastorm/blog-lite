@@ -1,4 +1,7 @@
 <template>
+  <div class="buttons">
+    <button class="export button" v-on:click="exportAllPosts">Export All</button>
+  </div>
   <div class="post-list">
     <div v-for="post in posts" :key="post.id" class="post">
       <router-link :to="'/post/' + post.id" style="text-decoration: none; color: white;">
@@ -39,6 +42,29 @@ export default {
         .catch((error) => {
           console.log(error)
         })
+    },
+    exportAllPosts() {
+      // Define the header for the CSV file
+      const header = "Title,Image,Caption,Username,Timestamp\n";
+
+      // Initialize the CSV content string with the header
+      let csvContent = header;
+
+      // Loop through all the posts and append their data to the CSV content string
+      for (const post of this.posts) {
+        const data = `"${post.title}","${post.image}","${post.caption}","${post.username}","${post.timestamp}"\n`;
+        csvContent += data;
+      }
+
+      // Create a download link for the CSV file
+      const encodedUri = encodeURI("data:text/csv;charset=utf-8," + csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "all_posts.csv");
+      document.body.appendChild(link);
+
+      // Trigger a click on the download link to initiate the download
+      link.click();
     }
   },
   created() {
@@ -84,11 +110,37 @@ export default {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  
+
 }
 
 .post p {
   font-size: 1.2rem;
   margin-bottom: 1rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.button {
+  width: 125px;
+  /* margin-right: rem; */
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  border: none;
+  color: #fff;
+  background-color: #413d40;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 1rem;
+}
+
+.export:hover {
+  background-color: #d89e00ee;
 }
 </style>

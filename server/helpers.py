@@ -82,7 +82,19 @@ def get_feed_details(user_id: int) -> List[Dict[str, Union[str, int, bool]]]:
         ORDER BY timestamp DESC
     """
     result = db.session.execute(text(query), {'user_id': user_id})
-    feed_details = [{'id': row.id, 'userId': row.user_id, 'title': row.title, 'caption': row.caption, 'image': row.image_url, 'timestamp': row.timestamp} for row in result]
+
+    feed_details = []
+
+    for row in result:
+        # Get username
+        user_query = """
+            SELECT name
+            FROM users
+            WHERE id = :user_id
+        """
+        user_result = db.session.execute(text(user_query), {'user_id': row.user_id}).first()
+        feed_details.append({'id': row.id, 'userId': row.user_id, 'title': row.title, 'caption': row.caption, 'image': row.image_url, 'timestamp': row.timestamp, 'username': user_result.name})
+
     return feed_details
 
 def get_my_posts_details(user_id: int) -> List[Dict[str, Union[str, int, bool]]]:
@@ -93,5 +105,13 @@ def get_my_posts_details(user_id: int) -> List[Dict[str, Union[str, int, bool]]]
         ORDER BY timestamp DESC
     """
     result = db.session.execute(text(query), {'user_id': user_id})
-    feed_details = [{'id': row.id, 'userId': row.user_id, 'title': row.title, 'caption': row.caption, 'image': row.image_url, 'timestamp': row.timestamp} for row in result]
+
+    # Get username
+    user_query = """
+        SELECT name
+        FROM users
+        WHERE id = :user_id
+    """
+    user_result = db.session.execute(text(user_query), {'user_id': user_id}).first()
+    feed_details = [{'id': row.id, 'userId': row.user_id, 'title': row.title, 'caption': row.caption, 'image': row.image_url, 'timestamp': row.timestamp, 'username' : user_result.name} for row in result]
     return feed_details

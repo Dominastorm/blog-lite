@@ -45,7 +45,7 @@
 - [x] Export Blog functionality
 - [x] Let blog content handle HTML tag
 - [x] Fix posts count
-- [ ] Add Export all posts option
+- [x] Add Export all posts option
 
 # Requests
 - [x] Add a request to get the user's feed
