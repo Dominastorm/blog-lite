@@ -1,7 +1,7 @@
 <template>
   <div class="post-list">
     <div v-for="post in posts" :key="post.id" class="post">
-      <router-link :to="'/post/' + post.id" style="text-decoration: none;">
+      <router-link :to="'/post/' + post.id" style="text-decoration: none; color: white;">
         <img :src="post.image" alt="Post Image">
         <h4>{{ post.title }}</h4>
         <p v-html="post.caption"></p>

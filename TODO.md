@@ -44,6 +44,8 @@
 - [x] Delete Post functionality
 - [x] Export Blog functionality
 - [x] Let blog content handle HTML tag
+- [ ] Fix posts count
+- [ ] Add Export all posts option
 
 # Requests
 - [x] Add a request to get the user's feed
@@ -66,7 +68,7 @@
 
 # Miscellaneous
 - [x] Make the follow/unfollow button a component of its own
-- [ ] Restyle the top part of profile
+- [x] Restyle the top part of profile
 - [x] Change colour of "Choose file" in CreatePostView
 - [ ] Add type hints to all functions
 - [ ] Remove unused imports

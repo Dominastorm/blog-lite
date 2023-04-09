@@ -10,7 +10,7 @@
     <h2>{{ title }}</h2>
     <img class="post-image" :src="image" alt="Post image">
     <br />
-    <p class="post-info">Posted by: <router-link class="link" :to="'/profile/' + userId">{{ username }}</router-link></p>
+    <p class="post-info">Posted by: <router-link :to="'/profile/' + userId" style="color: black;">{{ username }}</router-link></p>
     <p class="post-info">Created on: {{ timestamp.split(' ')[0] }}</p>
     <br />
     <div class="post-caption" v-html="caption"></div>
@@ -98,7 +98,7 @@ export default {
   padding: 20px;
   max-width: 80%;
   max-height: 100%;
-  background-color: rgb(206, 212, 219);
+  background-color: #2980b9;
   box-shadow: 0px 0px 10px #ccc;
   border-radius: 5px;
 }
@@ -116,8 +116,8 @@ export default {
 .post-info {
   text-align: center;
   display: block;
-  font-size: 16px;
-  color: #5d5d5d;
+  font-size: 20px;
+  color: #000000;
 }
 
 .post-caption {
@@ -173,6 +173,6 @@ h2 {
 }
 
 .export:hover {
-  background-color: #008CBA;
+  background-color: #d89e00ee;
 }
 </style>  

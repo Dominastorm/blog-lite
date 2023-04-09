@@ -6,13 +6,22 @@
       <div class="profile-image">
         <img :src="profileImage" alt="Profile Image">
       </div>
-      <div class="profile-stats">
-        <div>Total Posts: {{ totalPosts }}</div>
-        <div>Following: <router-link :to="/following/ + userId" style="color: white">{{ followingCount }}</router-link></div>
-        <div>Followers: <router-link :to="/followers/ + userId" style="color: white">{{ followersCount }}</router-link></div>
+      <div class="table-container">
+        <table>
+          <tr>
+            <th>Total Posts</th>
+            <th><router-link :to="/following/ + userId" style="text-decoration: none; color: white;">Following</router-link></th>
+            <th><router-link :to="/followers/ + userId" style="text-decoration: none; color: white;">Followers</router-link></th>
+          </tr>
+          <tr>
+            <td>{{ totalPosts }}</td>
+            <td><router-link :to="/following/ + userId" style="text-decoration: none; color: white;">{{ followingCount }}</router-link></td>
+            <td><router-link :to="/followers/ + userId" style="text-decoration: none; color: white;">{{ followersCount }}</router-link></td>
+          </tr>
+        </table>
       </div>
     </div>
-    <h3>My Posts</h3>
+    <h2>My Posts</h2>
     <PostList view="myposts" />
   </div>
 </template>
@@ -34,10 +43,10 @@ export default {
     }
   },
   data() {
-    return { 
+    return {
       profileImage: '/assets/dominastorm.jpeg', // replace with your profile image URL
-      totalPosts: 0, 
-      followingCount: 0, 
+      totalPosts: 0,
+      followingCount: 0,
       followersCount: 0,
     }
   },
@@ -56,7 +65,7 @@ export default {
         })
         .catch((error) => {
           console.log(error)
-        })  
+        })
     }
   },
   created() {
@@ -80,25 +89,6 @@ h2 {
   text-align: center;
 }
 
-.profile-info {
-  display: flex;
-  align-items: center;
-}
-
-.profile-image {
-  margin-right: 20px;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.profile-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .post-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -114,5 +104,74 @@ h2 {
   width: 100%;
   height: auto;
   object-fit: cover;
-}</style>
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2980b9;
+  padding: 20px;
+  margin: 50px;
+  border-radius: 10px;
+}
+
+.profile-image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 50px;
+  color: #fff;
+  font-size: 1.2em;
+  width: 400px;
+}
+
+.profile-stats div {
+  margin: 10px 0;
+}
+
+.profile-stats div:first-child {
+  font-size: 1.5em;
+}
+
+.profile-stats a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.profile-stats a:hover {
+  text-decoration: underline;
+}
+
+.table-container {
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  color: white; /* set text color to white */
+  font-size: 20px; /* increase font size to 16px */
+}
+
+th {
+  padding: 10px;
+  text-align: center;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+}
+</style>
   
