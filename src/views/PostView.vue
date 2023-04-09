@@ -86,20 +86,19 @@ export default {
   color: #5d5d5d;
 }
 
-.post-body {
+.post-caption {
   font-size: 18px;
   line-height: 1.5;
   margin-top: 20px;
-  color: #333;
+  font-size: 26px;
+  color: #000000;
+  text-align: center;
 }
 
 body {
   /* Dark blue */
   background-color: #2c3e50;
-  color: #000000;
   font-family: sans-serif;
-  font-size: 26px;
-  text-align: center;
 }
 
 h2 {
