@@ -76,3 +76,4 @@
 - [ ] Archive blogs
 - [ ] Add option to upload images
 - [ ] Replace @ with ..
+- [ ] Purity HTML in blog content

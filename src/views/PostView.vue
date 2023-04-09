@@ -1,6 +1,12 @@
 <template>
   <NavBar />
+  <!-- if myUserId is same as userId, display edit, delete and export buttons -->
   <div class="post-container">
+    <div class="buttons">
+      <button v-if="myUserId == userId" class="edit button" v-on:click="$router.push('/edit/' + postId)">Edit</button>
+      <button v-if="myUserId == userId" class="delete button" v-on:click="$router.push('/delete/' + postId)">Delete</button>
+      <button class="export button" v-on:click="$router.push('/export/' + postId)">Export</button>
+    </div>
     <h2>{{ title }}</h2>
     <img class="post-image" :src="image" alt="Post image">
     <br />
@@ -23,8 +29,11 @@ export default {
   computed: {
     postId() {
       return window.location.href.split('/').pop();
+    },
+    myUserId() {
+      return localStorage.getItem('userId');
     }
-  }, 
+  },
   data() {
     return {
       userId: 0,
@@ -109,4 +118,39 @@ h2 {
   margin-bottom: 1rem;
   text-align: center;
 }
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.button {
+  width: 125px;
+  /* margin-right: rem; */
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  border: none;
+  color: #fff;
+  background-color: #413d40;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 1rem;
+}
+
+.edit:hover {
+  background-color: #4CAF50;
+}
+
+.delete:hover {
+  background-color: #f44336;
+}
+
+.export:hover {
+  background-color: #008CBA;
+}
+
 </style>  
