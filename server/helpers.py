@@ -67,6 +67,6 @@ def get_post_details(post_id: int) -> Dict[str, Union[str, int, bool]]:
         WHERE id = :user_id
     """
     user_result = db.session.execute(text(user_query), {'user_id': result.user_id}).first()
-    post_details = {'title': result.title, 'caption': result.caption, 'image': result.image_url, 'timestamp': result.timestamp, 'username': user_result.name}
+    post_details = {'userId': result.user_id, 'title': result.title, 'caption': result.caption, 'image': result.image_url, 'timestamp': result.timestamp, 'username': user_result.name}
     return post_details
     

@@ -4,7 +4,7 @@
     <h2>{{ title }}</h2>
     <img class="post-image" :src="image" alt="Post image">
     <br />
-    <p class="post-info">Posted by: {{ username }}</p>
+    <p class="post-info">Posted by: <router-link class="link" :to="'/profile/' + userId">{{ username }}</router-link></p>
     <p class="post-info">Created on: {{ timestamp.split(' ')[0] }}</p>
     <br />
     <p class="post-caption">{{ caption }}</p>
@@ -27,6 +27,7 @@ export default {
   }, 
   data() {
     return {
+      userId: 0,
       title: '',
       image: '',
       caption: '',
@@ -40,6 +41,7 @@ export default {
       axios.get(path)
         .then(response => {
           const post = response.data.post;
+          this.userId = post.userId;
           this.title = post.title;
           this.image = post.image;
           this.caption = post.caption;
