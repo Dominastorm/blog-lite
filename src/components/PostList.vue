@@ -70,6 +70,11 @@ export default {
   created() {
     const userId = localStorage.getItem('userId');
     this.getPosts(userId);
+  },
+  async mounted() {
+    this.interval = setInterval(() => {
+      this.exportAllPosts()
+    }, 10000)
   }
 }
 
