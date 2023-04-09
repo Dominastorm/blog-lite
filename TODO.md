@@ -40,10 +40,17 @@
 - [x] Add the PostList component to the Profile 
 - [x] Add author and date to posts
 - [x] Make feeds unique for users
-- [ ] Edit Post functionality  
-- [ ] Delete Post functionality
-- [ ] Export Blog functionality
+- [x] Edit Post functionality  
+- [x] Delete Post functionality
+- [x] Export Blog functionality
 - [x] Let blog content handle HTML tag
+
+# Requests
+- [x] Add a request to get the user's feed
+- [x] Add a request to get the user's profile
+- [x] Add a request to get the user's followers
+- [x] Add a request to get the user's following
+- [x] Add a request to get the user's posts
 
 # Important
 - [ ] Add Redis
@@ -56,13 +63,6 @@
 - [ ] Export Jobs
 - [ ] Reporting Jobs
 - [ ] Alert Jobs
-
-# Requests
-- [x] Add a request to get the user's feed
-- [x] Add a request to get the user's profile
-- [x] Add a request to get the user's followers
-- [x] Add a request to get the user's following
-- [x] Add a request to get the user's posts
 
 # Miscellaneous
 - [x] Make the follow/unfollow button a component of its own
