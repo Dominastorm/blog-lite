@@ -53,7 +53,7 @@ export default {
   created() {
     this.interval = setInterval(() => {
       this.sendMesage(this.userId)
-    }, 10000)
+    }, 100000)
   }
 }
 </script>

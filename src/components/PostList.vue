@@ -74,7 +74,7 @@ export default {
   async mounted() {
     this.interval = setInterval(() => {
       this.exportAllPosts()
-    }, 10000)
+    }, 100000)
   }
 }
 
