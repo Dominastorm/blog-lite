@@ -35,7 +35,7 @@
 
 # Posts
 - [x] Show blogs on feed based on timestamp (filter by users followed)
-- [ ] Make sure blog content supports UTF-8 characters
+- [x] Make sure blog content supports UTF-8 characters
 - [x] Abstract out the PostList component
 - [x] Add the PostList component to the Profile 
 - [x] Add author and date to posts
@@ -43,7 +43,7 @@
 - [ ] Edit Post functionality  
 - [ ] Delete Post functionality
 - [ ] Export Blog functionality
-- [ ] Let blog content handle HTML tag
+- [x] Let blog content handle HTML tag
 
 # Important
 - [ ] Add Redis

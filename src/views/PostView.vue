@@ -7,7 +7,7 @@
     <p class="post-info">Posted by: <router-link class="link" :to="'/profile/' + userId">{{ username }}</router-link></p>
     <p class="post-info">Created on: {{ timestamp.split(' ')[0] }}</p>
     <br />
-    <p class="post-caption">{{ caption }}</p>
+    <div class="post-caption" v-html="caption"></div>
   </div>
 </template>
 
