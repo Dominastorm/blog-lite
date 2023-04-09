@@ -5,7 +5,7 @@
     <div class="buttons">
       <button v-if="myUserId == userId" class="edit button" v-on:click="$router.push('/editpost/' + postId)">Edit</button>
       <button v-if="myUserId == userId" class="delete button" v-on:click="deletePost">Delete</button>
-      <button class="export button" v-on:click="$router.push('/export/' + postId)">Export</button>
+      <button class="export button" v-on:click="exportPost">Export</button>
     </div>
     <h2>{{ title }}</h2>
     <img class="post-image" :src="image" alt="Post image">
@@ -72,7 +72,18 @@ export default {
         .catch(error => {
           console.log(error);
         });
-    }
+    },
+    exportPost() {
+      const header = "Title,Image,Caption,Username,Timestamp\n";
+      const data = `"${this.title}","${this.image}","${this.caption}","${this.username}","${this.timestamp}"`;
+      const csvContent = "data:text/csv;charset=utf-8," + header + data;
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", this.title + ".csv");
+      document.body.appendChild(link);
+      link.click();
+    },
   },
   created() {
     this.getPost(this.postId);
@@ -164,5 +175,4 @@ h2 {
 .export:hover {
   background-color: #008CBA;
 }
-
 </style>  
