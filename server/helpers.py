@@ -51,4 +51,22 @@ def get_profile_details(user_id: int) -> Dict[str, Union[str, int, bool]]:
     result = db.session.execute(text(query), {'user_id': user_id}).first()
     profile_details = {'totalPosts': result.posts, 'followersCount': result.followers_count, 'followingCount': result.following_count}
     return profile_details
+
+def get_post_details(post_id: int) -> Dict[str, Union[str, int, bool]]:
+    query = """
+        SELECT * 
+        FROM posts 
+        WHERE id = :post_id
+    """
+    result = db.session.execute(text(query), {'post_id': post_id}).first()
+
+    # Get username
+    user_query = """
+        SELECT name
+        FROM users
+        WHERE id = :user_id
+    """
+    user_result = db.session.execute(text(user_query), {'user_id': result.user_id}).first()
+    post_details = {'title': result.title, 'caption': result.caption, 'image': result.image_url, 'timestamp': result.timestamp, 'username': user_result.name}
+    return post_details
     

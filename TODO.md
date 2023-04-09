@@ -26,10 +26,11 @@
 
 # Create pages/components
 - [ ] PostList
-- [ ] PostView
+- [x] PostView
 - [ ] Feed
 - [ ] Insert PostList into feed
 - [ ] Insert PostList into profile
+- [ ] Link the username in the post to the profile
 
 # Posts
 - [ ] Show blogs on feed based on timestamp (filter by users followed)

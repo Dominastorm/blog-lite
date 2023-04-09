@@ -96,6 +96,7 @@ h2 {
   margin-bottom: 1rem;
   text-align: center;
 }
+
 .profile-info {
   display: flex;
   align-items: center;
