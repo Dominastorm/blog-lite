@@ -2,7 +2,7 @@
   <div>
     <NavBar />
     <h2>Feed</h2>
-    <PostList />
+    <PostList view="feed"/>
   </div>
 </template>
 

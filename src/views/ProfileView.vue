@@ -13,7 +13,7 @@
       </div>
     </div>
     <h3>My Posts</h3>
-    <PostList :posts="posts" />
+    <PostList view="myposts" />
   </div>
 </template>
 

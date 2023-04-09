@@ -15,6 +15,12 @@ import axios from 'axios'
 
 export default {
   name: 'PostList',
+  props: {
+    view: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       posts: []
@@ -22,7 +28,7 @@ export default {
   },
   methods: {
     getPosts(userId) {
-      const path = 'http://localhost:5000/feed/' + userId;
+      const path = `http://localhost:5000/${this.view}/${userId}`;
       console.log(path);
       axios
         .get(path)

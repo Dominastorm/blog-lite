@@ -34,12 +34,12 @@
 - [x] Link the username in the post to the profile
 
 # Posts
-- [ ] Show blogs on feed based on timestamp (filter by users followed)
+- [x] Show blogs on feed based on timestamp (filter by users followed)
 - [ ] Make sure blog content supports UTF-8 characters
-- [ ] Abstract out the PostList component
-- [ ] Add the PostList component to the Profile 
-- [ ] Add author and date to posts
-- [ ] Make feeds unique for users
+- [x] Abstract out the PostList component
+- [x] Add the PostList component to the Profile 
+- [x] Add author and date to posts
+- [x] Make feeds unique for users
 - [ ] Edit Post functionality  
 - [ ] Delete Post functionality
 - [ ] Export Blog functionality
