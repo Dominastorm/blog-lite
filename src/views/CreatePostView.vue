@@ -9,14 +9,11 @@
             </div>
             <div>
                 <label for="caption">Caption:</label>
-                <textarea id="caption" v-model="body" required></textarea>
+                <textarea id="caption" v-model="caption" required></textarea>
             </div>
             <div class="upload">
                 <label for="image">Image:</label>
-                <input type="file" id="image" ref="image" accept="image/*" @change="handleImageUpload" />
-            </div>
-            <div v-if="imageUrl">
-                <img :src="imageUrl" alt="Uploaded Image" />
+                <input type="url" id="image" v-model="image" required/>
             </div>
             <div>
                 <button type="submit">Create</button>
@@ -26,6 +23,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 import NavBar from '@/components/NavBar.vue';
 
 export default {
@@ -36,18 +35,26 @@ export default {
         return {
             title: '',
             caption: '',
-            body: '',
-            image: null,
-            imageUrl: ''
+            image: ''
+        }
+    },
+    computed: {
+        userId() {
+            return localStorage.getItem('userId');
         }
     },
     methods: {
-        handleImageUpload() {
-            this.image = this.$refs.image.files[0];
-        },
         createPost() {
-            // Your create post logic goes here
-            console.log('Creating post...')
+            const path = 'http://localhost:5000/createpost';
+            const params = "userId=" + this.userId + "&title=" + this.title + "&caption=" + this.caption + "&image=" + this.image;
+            axios.post(path, params)
+                .then((response) => {
+                    console.log(response);
+                    this.$router.push('/feed');
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
     }
 }
@@ -90,6 +97,7 @@ label {
 }
 
 input[type="text"],
+input[type="url"],
 textarea {
   padding: 0.5rem;
   font-size: 1rem;

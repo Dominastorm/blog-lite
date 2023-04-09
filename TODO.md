@@ -19,6 +19,10 @@
 - [x] Make profiles unique for users (add :id to index.js)
 - [x] Get accurate total posts count, followers count, following count
 
+# CreatePostView
+- [ ] Make API function to create a post
+- [ ] Open the post once created
+
 # Posts
 - [ ] Show blogs on feed based on timestamp (filter by users followed)
 - [ ] Make sure blog content supports UTF-8 characters
@@ -60,3 +64,4 @@
 - [ ] Make styling global
 - [ ] Use token for authentication
 - [ ] Archive blogs
+- [ ] Add option to upload images

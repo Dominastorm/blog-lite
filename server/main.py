@@ -3,13 +3,12 @@ from flask_login import login_required, current_user
 
 from server.helpers import get_follower_list, get_following_list, get_search_results, get_profile_details
 
-from .models import User, UserFollows
+from .models import Posts, User, UserFollows
 from . import db
 
 main = Blueprint('main', __name__)
 
 # GET functions
-
 @main.route('/followers/<int:user_id>', methods=['GET'])
 def get_followers(user_id: int):
     follower_list = get_follower_list(user_id)
@@ -31,7 +30,6 @@ def get_profile(user_id: int):
     return jsonify({'profileDetails': profile_details}), 200
 
 # POST functions
-
 @main.route('/follow/', methods=['POST'])
 def follow_user():
     user_id = request.form.get('userId')
@@ -81,3 +79,17 @@ def unfollow_user():
     db.session.commit()
     
     return jsonify({'message': 'User unfollowed successfully.'}), 200
+
+@main.route('/createpost/', methods=['POST'])
+def create_post():
+    user_id = request.form.get('userId')
+    title = request.form.get('title')
+    caption = request.form.get('caption')
+    image = request.form.get('image')
+    
+    # Create the post
+    new_post = Posts(user_id=user_id, title=title, caption=caption, image_url=image)
+    db.session.add(new_post)
+    db.session.commit()
+
+    return jsonify({'message': 'Post created successfully.'}), 200
