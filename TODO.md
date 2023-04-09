@@ -25,12 +25,13 @@
 - [ ] Open the post once created
 
 # Create pages/components
-- [ ] PostList
+- [x] PostList
 - [x] PostView
-- [ ] Feed
-- [ ] Insert PostList into feed
+- [x] Feed
+- [x] Insert PostList into feed
+- [ ] Link PostList posts to PostView
 - [ ] Insert PostList into profile
-- [ ] Link the username in the post to the profile
+- [x] Link the username in the post to the profile
 
 # Posts
 - [ ] Show blogs on feed based on timestamp (filter by users followed)
@@ -64,7 +65,7 @@
 - [ ] Add a request to get the user's posts
 
 # Miscellaneous
-- [ ] Make the follow/unfollow button a component of its own
+- [x] Make the follow/unfollow button a component of its own
 - [ ] Restyle the top part of profile
 - [x] Change colour of "Choose file" in CreatePostView
 - [ ] Add type hints to all functions
@@ -74,3 +75,4 @@
 - [ ] Use token for authentication
 - [ ] Archive blogs
 - [ ] Add option to upload images
+- [ ] Replace @ with ..

@@ -1,23 +1,44 @@
 <template>
-    <div class="post-list">
-        <div v-for="post in posts" :key="post.id" class="post">
-            <img :src="post.image" alt="Post Image">
-            <h4>{{ post.title }}</h4>
-            <p>{{ post.caption }}</p>
-        </div>
+  <div class="post-list">
+    <div v-for="post in posts" :key="post.id" class="post">
+      <img :src="post.image" alt="Post Image">
+      <h4>{{ post.title }}</h4>
+      <p>{{ post.caption }}</p>
     </div>
+  </div>
 </template>
   
 <script>
+import axios from 'axios'
+
 export default {
-    name: 'PostList',
-    props: {
-        posts: {
-            type: Array,
-            required: true
-        }
+  name: 'PostList',
+  data() {
+    return {
+      posts: []
     }
+  },
+  methods: {
+    getPosts(userId) {
+      const path = 'http://localhost:5000/feed/' + userId;
+      console.log(path);
+      axios
+        .get(path)
+        .then((response) => {
+          console.log(response.data);
+          this.posts = response.data.posts;
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+  },
+  created() {
+    const userId = localStorage.getItem('userId');
+    this.getPosts(userId);
+  }
 }
+
 </script>
   
 <style scoped>
@@ -61,6 +82,5 @@ export default {
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
-
 </style>
   

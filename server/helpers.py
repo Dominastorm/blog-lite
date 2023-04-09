@@ -70,3 +70,17 @@ def get_post_details(post_id: int) -> Dict[str, Union[str, int, bool]]:
     post_details = {'userId': result.user_id, 'title': result.title, 'caption': result.caption, 'image': result.image_url, 'timestamp': result.timestamp, 'username': user_result.name}
     return post_details
     
+def get_feed_details(user_id: int) -> List[Dict[str, Union[str, int, bool]]]:
+    query = """
+        SELECT * 
+        FROM posts 
+        WHERE user_id IN (
+            SELECT following_id 
+            FROM user_follows 
+            WHERE follower_id = :user_id
+        )
+        ORDER BY timestamp DESC
+    """
+    result = db.session.execute(text(query), {'user_id': user_id})
+    feed_details = [{'id': row.id, 'userId': row.user_id, 'title': row.title, 'caption': row.caption, 'image': row.image_url, 'timestamp': row.timestamp} for row in result]
+    return feed_details
