@@ -1,6 +1,10 @@
-from flask import Blueprint, jsonify, render_template, redirect, url_for, request, flash
+from flask import Blueprint, jsonify, render_template, redirect, url_for, request, current_app
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user
+from datetime import datetime, timedelta
+from functools import wraps
+
+import jwt
 
 from .models import User
 from . import db
@@ -27,7 +31,13 @@ def login_post():
     # If the above check passes, then we know the user has the right credentials
     # login_user(user, remember=remember)
     login_user(user)
-    return jsonify({'message': 'Logged in successfully!', 'userId': user.id, 'userName': user.name}), 200
+
+    token = jwt.encode({
+        'sub': user.email,
+        'iat':datetime.utcnow(),
+        'exp': datetime.utcnow() + timedelta(minutes=30)},
+        current_app.config['SECRET_KEY'])
+    return jsonify({ 'token': token, 'userId': user.id, 'userName': user.name })
 
 @auth.route('/signup')
 def signup():
