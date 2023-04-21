@@ -5,6 +5,7 @@ from server.helpers import get_feed_details, get_follower_list, get_following_li
 
 from .models import Posts, User, UserFollows
 from . import db
+from .auth import token_required
 
 main = Blueprint('main', __name__)
 
@@ -51,8 +52,9 @@ def get_my_latest_post(user_id: int):
 
 # POST functions
 @main.route('/follow/', methods=['POST'])
-def follow_user():
-    user_id = request.form.get('userId')
+@token_required
+def follow_user(current_user):
+    user_id = current_user.id
     follow_id = request.form.get('followerId')
     
     # Handle case where already following user
@@ -76,8 +78,9 @@ def follow_user():
     return jsonify({'message': 'User followed successfully.'}), 200
 
 @main.route('/unfollow/', methods=['POST'])
-def unfollow_user():
-    user_id = request.form.get('userId')
+@token_required
+def unfollow_user(current_user):
+    user_id = current_user.id
     unfollow_id = request.form.get('followerId')
     
     unfollow = UserFollows.query.filter_by(follower_id=user_id, following_id=unfollow_id).first()
